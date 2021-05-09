@@ -248,8 +248,9 @@ a {
     background-color: #1F99D0;
     color: white;
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Delius', cursive;
     padding: 1% 0 1% 0;
+    font-size: 13pt;
 
 }
 
@@ -271,3 +272,7 @@ a {
     transition: 0.2s;
     font-size: 19pt;
 }
+
+
+
+/*       LOGIN           */
