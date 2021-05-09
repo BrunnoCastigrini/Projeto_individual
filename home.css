@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* Scrollbar*/
 ::-webkit-scrollbar{
     width: 8px;
@@ -235,6 +238,36 @@ a {
     font-family: 'Domine', serif;
     font-size: 20pt;
     color: white;
+    border-radius: 20px;
 }
 
 /* Seção 4 */
+
+.footer {
+    margin: 0;
+    background-color: #1F99D0;
+    color: white;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    padding: 1% 0 1% 0;
+
+}
+
+.secao3 button {
+    margin: 2% 0 2% 0;
+    padding: 1% 0.5% 1% 0.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 18pt;
+    box-shadow: 5px 5px 9px -2px black;
+    border-radius: 5px;
+    border: none;
+    background-color: #1F99D0;
+}
+
+.secao3 button:hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 19pt;
+}
