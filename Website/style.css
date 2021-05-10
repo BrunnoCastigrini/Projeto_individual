@@ -31,14 +31,14 @@ body {
     width: 95%;
     margin: auto;
 }
-.header {
+.header, .header2{
     position: fixed;
     width: 100%;
     height: 20%;
     
 }
 
-.header img {
+.header img, .header2 img {
     width: 11%;
 }
 
@@ -143,7 +143,7 @@ a {
     background-color: #936ED4;
 }
 
-.botao_entre:hover{
+.botao_entre a:hover{
     color: white;
     cursor: pointer;
     transition: 0.2s;
@@ -276,3 +276,18 @@ a {
 
 
 /*       LOGIN           */
+.header2 .navbar {
+    width: 13.5%;
+}
+
+.header2 .cadastrar-se {
+    padding: 2% 4% 2% 4%;
+}
+
+.login_box {
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 6%;
+    padding-bottom: 90%;
+}
