@@ -154,7 +154,7 @@ a {
     background-color: #1F99D0;
 }
 
-.botao_cadastre-se:hover{
+.botao_cadastre-se a:hover{
     color: white;
     cursor: pointer;
     transition: 0.2s;
@@ -276,8 +276,14 @@ a {
 
 
 /*       LOGIN           */
+.body2 {
+    background-color: #555555;
+    background-image: url(img/backgroundtile.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .header2 .navbar {
-    width: 13.5%;
+    width: 13.8%;
 }
 
 .header2 .cadastrar-se {
@@ -288,6 +294,76 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    padding-top: 6%;
-    padding-bottom: 90%;
+    padding-top: 5.8%;
+    
+    overflow: auto;
+    margin: auto;
+}
+
+.login_box img {
+    width: 23%;
+    margin-bottom: 2%;
+}
+
+.login_box input {
+    text-align: center;
+    background-color: rgba(255,255,255, 0.8);
+    padding: 0.3% 0.1% 0.3% 0.1%;
+    width: 23%;
+    margin: 0.5% 38.5% 0.5% 38.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16pt;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+}
+
+.login_box button {
+    margin: 0.5% 38.5% 0.5% 38.5%;
+    width: 23%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18pt;
+    font-weight: bolder;
+}
+
+.login_box button:hover {
+    color: white;
+    transition: 0.3s;
+    font-size: 20pt;
+}
+
+.login_box .criar_conta {
+    background-color: #1F99D0;
+}
+
+.login_box .entrar{
+    background-color:#936ED4;
+}
+
+.login_box span {
+    font-size: 20pt;
+    font-family: 'Delius', cursive;
+}
+
+/*   CADASTRO     */
+
+.body3 {
+    background-color: #936ED4;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size:cover
+}
+
+.body3 .header {
+    position: unset;
+}
+
+.cad_box{
+    background-color: white;
+    width: 80%;
+    height: 300px;
+    margin: auto
 }
