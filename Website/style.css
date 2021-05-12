@@ -314,8 +314,13 @@ a {
     font-family: 'Quicksand', sans-serif;
     font-size: 16pt;
     border: none;
+    border-bottom: 1px solid black;
     border-radius: 5px;
-    box-shadow: 5px 5px 9px -2px black;
+    /* box-shadow: 5px 5px 9px -2px black; */
+}
+
+.login_box input::placeholder {
+    color: black;
 }
 
 .login_box button {
@@ -327,6 +332,7 @@ a {
     font-family: 'Quicksand', sans-serif;
     font-size: 18pt;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .login_box button:hover {
@@ -335,7 +341,7 @@ a {
     font-size: 20pt;
 }
 
-.login_box .criar_conta {
+.login_box .criar_conta{
     background-color: #1F99D0;
 }
 
@@ -352,7 +358,7 @@ a {
 
 .body3 {
     background-color: #936ED4;
-    background-image: url();
+    background-image: url(img/midnight.jpg);
     background-repeat: no-repeat;
     background-size:cover
 }
@@ -362,8 +368,50 @@ a {
 }
 
 .cad_box{
-    background-color: white;
+    /* background-color: rgba(255,255,255, 0.8); */
+    /* box-shadow: 5px 5px 9px -2px black; */
+    /* border: 3px solid black; */
+    /* border-radius: 5px; */
     width: 80%;
     height: 300px;
-    margin: auto
+    margin: auto;
+    text-align: center;
 }
+
+.cad_box input {
+    text-align: center;
+    background-color: rgba(255,255,255, 0.9);
+    padding: 0.3% 0.1% 0.3% 0.1%;
+    width: 34%;
+    margin: 0.5% 33% 0.5% 33%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16pt;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+
+}
+
+.cad_box button{
+    margin: 0.5% 33% 0.5% 33%;
+    width: 34%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18pt;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: #1F99D0;
+}
+
+.cad_box button:hover{
+    color: white;
+    font-size: 20pt;
+    transition: 0.3s;
+}
+
+.cad_box img {
+    width: 34%;
+}
+
