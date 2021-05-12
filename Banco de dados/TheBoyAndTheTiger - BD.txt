@@ -1,0 +1,9 @@
+CREATE DATABASE TheBoyAndTheTiger;
+USE TheBoyAndTheTiger;
+
+CREATE TABLE usuario(
+     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+     login VARCHAR(50),
+     email VARCHAR(50),
+     senha INT
+     ) AUTO_INCREMENT = 1000;

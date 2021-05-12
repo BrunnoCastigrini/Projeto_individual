@@ -32,7 +32,7 @@
             <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png" alt="Logo grande"></a>
             <input id="in_usuario" placeholder="Nome de usuário">
             <input type="password" id="in_senha" placeholder="Senha">
-            <button class="entrar">Entrar</button>
+            <button class="entrar" onclick="entrar()">Entrar</button>
             <span>Ou</span>
             <a href="cadastro.html"><button class="criar_conta">Criar conta</button></a>
 
@@ -41,3 +41,18 @@
     
 </body>
 </html>
+<script>
+    function entrar() {
+        var usuario = in_usuario.value;
+        var senha = in_senha.value;
+
+        if (usuario == 'admin' && senha == '123') {
+            window.location.href = 'index.html'
+
+        } else {
+            alert('Senha incorreta')
+            
+        }
+        
+    }
+</script>

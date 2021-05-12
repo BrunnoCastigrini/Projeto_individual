@@ -354,6 +354,10 @@ a {
     font-family: 'Delius', cursive;
 }
 
+.login_box a {
+    width: 20%;
+}
+
 /*   CADASTRO     */
 
 .body3 {
