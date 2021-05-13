@@ -1,0 +1,71 @@
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width: 8px;
+    height: 20px; 
+}
+
+::-webkit-scrollbar-button{
+    height: 0.1px;
+}
+::-webkit-scrollbar-track {
+    background-color: #B1B1B1;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #555555;
+    border-radius: 10px;
+}
+
+/* body */
+body {
+    margin: 0;
+}
+
+/* Header */
+.container {
+    width: 95%;
+    margin: auto;
+}
+.header {
+    margin: 0;
+}
+
+.header ul {
+    list-style: none;
+    float: right;
+}
+
+.header img {
+    width: 11%;
+    float: left;
+}
+
+ul li {
+    float: left;
+}
+
+h2 {
+    margin: 0;
+}
+
+/* tags */
+
+.tags{
+    width: 20%;
+    margin: auto;
+    padding-top: 5%;
+}
+
+/* /mu/ */
+.mu {
+    text-align: center;
+}
+
+.mu img {
+    width: 11%;
+}
+
+.txt_mu {
+    width: 15%;
+}

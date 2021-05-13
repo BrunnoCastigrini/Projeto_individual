@@ -22,7 +22,6 @@
     <div class ="header2">
         <div class="container">
            <a href="index.html"> <img src="img/boy3.png" alt="logo"></a>
-
         </div>
     </div>
 
@@ -34,7 +33,7 @@
             <input type="password" id="in_senha" placeholder="Senha">
             <button class="entrar" onclick="entrar()">Entrar</button>
             <span>Ou</span>
-            <a href="cadastro.html"><button class="criar_conta">Criar conta</button></a>
+            <button class="criar_conta" onclick="criar_conta()">Criar conta</button>
 
         </div>
     </div>
@@ -47,12 +46,17 @@
         var senha = in_senha.value;
 
         if (usuario == 'admin' && senha == '123') {
-            window.location.href = 'index.html'
+            window.location.href = 'index.html';
 
         } else {
-            alert('Senha incorreta')
+            alert('Senha incorreta');
             
-        }
+        };
+        
+    }
+
+    function criar_conta() {
+        window.location.href='cadastro.html';
         
     }
 </script>

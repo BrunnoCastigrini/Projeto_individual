@@ -316,7 +316,7 @@ a {
     border: none;
     border-bottom: 1px solid black;
     border-radius: 5px;
-    /* box-shadow: 5px 5px 9px -2px black; */
+    box-shadow: 5px 5px 9px -2px black;
 }
 
 .login_box input::placeholder {
@@ -352,10 +352,6 @@ a {
 .login_box span {
     font-size: 20pt;
     font-family: 'Delius', cursive;
-}
-
-.login_box a {
-    width: 20%;
 }
 
 /*   CADASTRO     */
@@ -418,4 +414,5 @@ a {
 .cad_box img {
     width: 34%;
 }
+
 
