@@ -1,0 +1,213 @@
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width: 8px;
+    height: 20px; 
+}
+
+::-webkit-scrollbar-button{
+    height: 0.1px;
+}
+::-webkit-scrollbar-track {
+    background-color: #B1B1B1;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #555555;
+    border-radius: 10px;
+}
+
+/* body */
+body {
+    margin: 0;
+    background-image: url(../img/berserk.png);
+    background-color: #5856A4;   
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+/* Header */
+.container {
+    width: 95%;
+    margin: auto;
+}
+.header {
+    margin: 0;
+    overflow: auto;
+}
+
+.header ul {
+    list-style: none;
+    float: right;
+    width: 7%;
+    text-align: center;
+}
+
+.header img {
+    width: 11%;
+    float: left;
+}
+
+.header .logout {
+    float: left;
+    background-color: #936ED4;
+    margin-right: 4%;
+    font-size: 17pt;
+    padding: 2% 10% 2% 10%;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    box-shadow: 5px 5px 9px -2px black;
+    
+}
+
+.header a{
+    text-decoration: none;
+    color: black;
+}
+
+.header a:hover {
+    transition: 0.2s;
+    color: white;
+    font-size: 20pt;
+}
+
+h2 {
+    margin: 0;
+    
+}
+
+/* tags */
+
+.tags{
+    text-align: center;
+    width: 15%;
+    margin: 0 42.5% 8% 42.5%;
+    padding-top: 1%;
+    font-family: 'Domine', serif;
+    font-weight: bolder;
+    font-size: 30pt;
+    /* border-bottom: 3px solid black; */
+    color: black;
+    overflow: auto;
+}
+
+/* /mu/ */
+.mu {
+    text-align: center;
+    width: 23%;
+     border-radius: 6px;
+     border: 5px ridge black;
+     margin: 0% 0% 0% 6.75%;
+     background-color: white;
+     float: left;
+ 
+}
+
+.mu img {
+    width: 40%;
+    border-radius: 100px;
+    border: 5px solid black;
+    margin-top: -19%;
+    background-color: white
+    
+}
+   
+.mu h3 {
+    font-family: 'Domine', serif;
+    font-weight: bolder;
+    font-size: 22pt;
+    margin: 0;
+    padding-top: 1%;
+}
+.txt_mu {
+    padding-top: 8%;
+    font-family: 'Domine', serif;
+    padding-bottom: 20%;
+    font-size: 15pt;
+}
+
+/* GOD */
+
+.god {
+    text-align: center;
+    width: 23%;
+     border-radius: 6px;
+     border: 5px ridge black;
+     margin: 0% 0% 0% 7.75%;
+     background-color: white;
+     float: left;
+}
+
+.god img {
+    width: 40%;
+    border-radius: 100px;
+    border: 5px solid black;
+    margin-top: -19%;
+    background-color: white
+}
+
+.god h3 {
+    font-family: 'Domine', serif;
+    font-weight: bolder;
+    font-size: 22pt;
+    margin: 0;
+    padding-top: 1%;
+}
+
+.txt_god {
+    padding-top: 8%;
+    font-family: 'Domine', serif;
+    padding-bottom: 20%;
+    font-size: 15pt;
+}
+
+/* /hack/ */
+
+.hack{
+    text-align: center;
+    width: 23%;
+     border-radius: 6px;
+     border: 5px ridge black;
+     margin: 0% 0% 7% 7.75%;
+     background-color: white;
+     float: left;
+}
+
+.hack img {
+    width: 40%;
+    border-radius: 100px;
+    border: 5px solid black;
+    margin-top: -19%;
+    background-color: white
+}
+
+.hack h3 {
+    font-family: 'Domine', serif;
+    font-weight: bolder;
+    font-size: 22pt;
+    margin: 0;
+    padding-top: 1%;
+}
+
+.txt_hack {
+    padding-top: 8%;
+    font-family: 'Domine', serif;
+    padding-bottom: 20%;
+    font-size: 15pt;
+}
+.footer {
+    
+    float: right;
+    width: 100%;
+    margin: 0;
+    background-color: #1F99D0;
+    color: white;
+    text-align: center;
+    font-family: 'Delius', cursive;
+    padding: 1% 0 1% 0;
+    font-size: 13pt;
+    overflow: auto;
+}
