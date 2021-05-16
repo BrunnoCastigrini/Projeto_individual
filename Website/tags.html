@@ -35,8 +35,8 @@
     <div class="mu">
        <div class="container">
            
-        <img src="img/electric-guitar.png" alt="guitar">
-        <h3>/mu/</h3>
+        <img src="img/electric-guitar.png" onclick='mu()' alt="guitar" onmouseout="this.src='img/electric-guitar.png'" onmouseover="this.src='img/guitarra2.png'">
+        <h3 onclick='mu()'>/mu/</h3>
         <div class="txt_mu">
             Na tag /mu/ discutimos sobre álbuns, bandas, 
             equipamentos e tudo que envolve o universo musical.
@@ -48,8 +48,8 @@
     <div class="god">
         <div class="container">
 
-            <img src="img/esoteric.png" alt="one_eye">
-            <h3>/god/</h3>
+            <img src="img/esoteric.png" alt="one_eye" onclick="god()" onmouseout="this.src='img/esoteric.png'" onmouseover="this.src='img/esoteric2.png'">
+            <h3 onclick="god()">/god/</h3>
             <div class="txt_god">
                 Na tag /god/ discutimos sobre religiões,
                 esoterismo, rituais, meditação e tudo que envolve
@@ -62,8 +62,8 @@
     <div class="hack">
         <div class="container">
 
-            <img src="img/skull.png" alt="hacking">
-            <h3>/hack/</h3>
+            <img src="img/spyware.png" onclick='hack()'alt="hacking" onmouseout="this.src='img/spyware.png'" onmouseover="this.src='img/spyware2.png'">
+            <h3 onclick="hack()">/hack/</h3>
             <div class="txt_hack">
                 Na tag /hack/ nós falamos sobre Cyber security, hacking,
                 pentest e compartilhamos experiências sobre a área.
@@ -76,3 +76,19 @@
     
 </body>
 </html>
+<script>
+    function god() {
+        window.location.href='god.html'
+    }
+
+    function mu() {
+        window.location.href='mu.html'
+        
+    }
+    
+    function hack() {
+        window.location.href='hack.html'
+        
+    }
+
+</script>

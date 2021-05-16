@@ -91,13 +91,14 @@ h2 {
     font-size: 30pt;
     /* border-bottom: 3px solid black; */
     color: black;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 /* /mu/ */
 .mu {
     text-align: center;
     width: 23%;
+    height: 50vh;
      border-radius: 6px;
      border: 5px ridge black;
      margin: 0% 0% 0% 6.75%;
@@ -111,8 +112,8 @@ h2 {
     border-radius: 100px;
     border: 5px solid black;
     margin-top: -19%;
-    background-color: white
-    
+    background-color: white;
+    cursor: pointer;
 }
    
 .mu h3 {
@@ -121,11 +122,17 @@ h2 {
     font-size: 22pt;
     margin: 0;
     padding-top: 1%;
+    cursor: pointer;
+}
+
+.mu h3:hover{
+    transition: 0.2s;
+    color: #1F99D0;
 }
 .txt_mu {
     padding-top: 8%;
     font-family: 'Domine', serif;
-    padding-bottom: 20%;
+    /* padding-bottom: 20%; */
     font-size: 15pt;
 }
 
@@ -134,11 +141,13 @@ h2 {
 .god {
     text-align: center;
     width: 23%;
+    height: 50vh;
      border-radius: 6px;
      border: 5px ridge black;
      margin: 0% 0% 0% 7.75%;
      background-color: white;
      float: left;
+
 }
 
 .god img {
@@ -146,7 +155,8 @@ h2 {
     border-radius: 100px;
     border: 5px solid black;
     margin-top: -19%;
-    background-color: white
+    background-color: white;
+    cursor: pointer;
 }
 
 .god h3 {
@@ -155,12 +165,18 @@ h2 {
     font-size: 22pt;
     margin: 0;
     padding-top: 1%;
+    cursor: pointer;
+}
+
+.god h3:hover{
+    transition: 0.2s;
+    color: #936ED4;
 }
 
 .txt_god {
     padding-top: 8%;
     font-family: 'Domine', serif;
-    padding-bottom: 20%;
+    /* padding-bottom: 20%; */
     font-size: 15pt;
 }
 
@@ -174,6 +190,7 @@ h2 {
      margin: 0% 0% 7% 7.75%;
      background-color: white;
      float: left;
+     height: 50vh;
 }
 
 .hack img {
@@ -181,7 +198,8 @@ h2 {
     border-radius: 100px;
     border: 5px solid black;
     margin-top: -19%;
-    background-color: white
+    background-color: white;
+    cursor: pointer;
 }
 
 .hack h3 {
@@ -190,12 +208,18 @@ h2 {
     font-size: 22pt;
     margin: 0;
     padding-top: 1%;
+    cursor: pointer;
+}
+
+.hack h3:hover{
+    transition: 0.2s;
+    color: #FF385F;
 }
 
 .txt_hack {
     padding-top: 8%;
     font-family: 'Domine', serif;
-    padding-bottom: 20%;
+    /* padding-bottom: 20%; */
     font-size: 15pt;
 }
 .footer {
