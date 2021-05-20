@@ -27,16 +27,21 @@
 
     <div class="cad_box">
         <div class="container">
-            
+
             <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png" alt=""></a>
-                <input id="in_login" placeholder="Nome de usuário" maxlength="20">
-                <input id="in_email" placeholder="E-mail">
-            
-                <input id="in_senha" placeholder="Senha" type="password">
+    
+            <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                
+                <input id="in_login" name="login" type="text" placeholder="Nome de usuário" maxlength="20">
+
+                <input id="in_email" name="email" type="text" placeholder="E-mail">
+    
+                <input id="in_senha" name="senha" type="password" placeholder="Senha" >
+
                 <input id="in_confirmar" placeholder="Confirmação de senha" type="password">
-                <span></span>
             
-            <button class="criar_conta" onclick="cadastrar()">Criar conta</button>
+            <button class="criar_conta" type="submit" value="cadastrar">Criar conta</button>
+        </form>
 
         </div>
     </div>
@@ -81,14 +86,44 @@
             
         } else if (senha_invalida) {
         alert(`As senhas não coincidem.`)
-
-        } else {
-            window.location.href='login.html'
-
-
-        }
-      
         
+        /* Interação com o BD */
+        } else {
+            aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+
+        }        
     }
 
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.display='block';
+        div_erro.style.display='none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display='none';
+        div_erro.style.display='block';
+    }
 </script>

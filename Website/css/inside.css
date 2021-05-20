@@ -124,12 +124,12 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 20pt;
     color: #343441;
-    border: 4px solid #807f7f;
+    border: 4px solid #565663;
 }
 
 .criar_post:hover{
     transition: 0.2s;
-    border: 4px solid #343441;
+    border: 4px solid #CD03FF;
 }
 
 .criar_post h2{
@@ -203,8 +203,8 @@ body {
 }
 
 .postagem:hover{
-    transition: 0.2s;
-    border: 4px solid #9e9e9e;
+    transition: 0.3s;
+    border: 4px solid #cd03ff;
 }
 
 .postagem .postado_por {
@@ -276,16 +276,6 @@ body {
     background-color: #c7c7c7;
     width: 90%;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* FOOTER */
 .footer {

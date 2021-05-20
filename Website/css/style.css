@@ -367,10 +367,6 @@ a {
 }
 
 .cad_box{
-    /* background-color: rgba(255,255,255, 0.8); */
-    /* box-shadow: 5px 5px 9px -2px black; */
-    /* border: 3px solid black; */
-    /* border-radius: 5px; */
     width: 80%;
     height: 300px;
     margin: auto;
@@ -391,7 +387,7 @@ a {
 
 }
 
-.cad_box button{
+.cad_box .criar_conta{
     margin: 0.5% 33% 0.5% 33%;
     width: 34%;
     border: none;
@@ -403,7 +399,7 @@ a {
     background-color: #1F99D0;
 }
 
-.cad_box button:hover{
+.cad_box .criar_conta:hover{
     cursor: pointer;
     color: white;
     font-size: 20pt;

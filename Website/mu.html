@@ -23,7 +23,7 @@
     <div class="header">
         <div class="container">
 
-            <a href="tags.html"> <img src="img/boy3.png" alt="logo"></a>
+            <a href="tags.html"> <img src="img/boy4.png" alt="logo"></a>
             <ul>
                 <a href="tags.html"><li class="tags">Tags</li></a>
                 <a href="index.html"><li class="sair">Sair</li></a>
@@ -42,9 +42,9 @@
         <div class="container">
             <h2>Criar post</h2>
             
-            <input class="input_titulo" placeholder="Título">
+            <input class="input_titulo" id="in_titulo" placeholder="Título">
             
-            <input class="input_titulo" placeholder="Img URL(opcional)" type="url">
+            <input class="input_titulo" id="in_url" placeholder="Img URL(opcional)" type="url">
 
             <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
             <textarea class="input_txt" id="nova_postagem" cols="30" rows="10" placeholder="Sobre o que quer falar?" 
@@ -116,20 +116,4 @@
     
 </body>
 </html>
-<script src="god.js"></script>
-<script>
-    function postar(){
-        var teste = nova_postagem.value
-        alert(teste)
-
-        btn_criar.style.display='block';
-        div_criar.style.display='none';
-    }
-
-    function contagem() {
-        var campo_texto = nova_postagem.value;
-        var tamanho = campo_texto.length;
-
-        b_tamanho.innerHTML = tamanho;
-    }
-</script>
+<script src="postagem.js"></script>

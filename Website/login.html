@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,53 +11,95 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- font-family: 'Delius', cursive; -->
-         <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <!-- font-family: 'Domine', serif; -->
-         <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
     <!-- font-family: 'Quicksand', sans-serif; -->
-         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
-     <!--font-family: 'Montserrat', sans-serif;-->
-         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <!--font-family: 'Montserrat', sans-serif;-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body class="body2">
-    <div class ="header2">
+    <div class="header2">
         <div class="container">
-           <a href="index.html"> <img src="img/boy3.png" alt="logo"></a>
+            <a href="index.html"> <img src="img/boy3.png" alt="logo"></a>
         </div>
     </div>
 
     <div class="login_box">
         <div class="container">
+            <form id="form_login" method="post" onsubmit="return entrar()">
+                <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png" alt="Logo grande"></a>
 
-            <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png" alt="Logo grande"></a>
-            <input id="in_usuario" placeholder="Nome de usuário">
-            <input type="password" id="in_senha" placeholder="Senha">
-            <button class="entrar" onclick="entrar()">Entrar</button>
+                <input type="text" name="login" id="in_usuario" placeholder="Nome de usuário">
+
+                <input type="password" name="senha" id="in_senha" placeholder="Senha">
+
+                <button id="btn_entrar" class="entrar" onclick="entrar()">Entrar</button>
+
+            </form>
+
             <span>Ou</span>
-            <button class="criar_conta" onclick="criar_conta()">Criar conta</button>
 
+            <button class="criar_conta" onclick="criar_conta()">Criar conta</button>
         </div>
     </div>
-    
+
 </body>
+
 </html>
 <script>
+
     function entrar() {
-        var usuario = in_usuario.value;
-        var senha = in_senha.value;
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
 
-        if (usuario == 'admin' && senha == '123') {
-            window.location.href = 'tags.html';
+            if (resposta.ok) {
 
-        } else {
-            alert('Senha incorreta');
-            
-        };
-        
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.login_backend;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+
+                    window.location.href = 'tags.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
     }
 
     function criar_conta() {
-        window.location.href='cadastro.html';
-        
+        window.location.href = 'cadastro.html';
+
     }
 </script>
