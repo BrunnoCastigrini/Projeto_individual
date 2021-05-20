@@ -29,17 +29,66 @@
         <div class="container">
             
             <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png" alt=""></a>
-                <input placeholder="Nome de usuário">
-                <input placeholder="E-mail">
+                <input id="in_login" placeholder="Nome de usuário" maxlength="20">
+                <input id="in_email" placeholder="E-mail">
             
-                <input placeholder="Senha" type="password">
-                <input placeholder="Confirmação de senha" type="password">
+                <input id="in_senha" placeholder="Senha" type="password">
+                <input id="in_confirmar" placeholder="Confirmação de senha" type="password">
                 <span></span>
             
-            <button class="criar_conta">Criar conta</button>
+            <button class="criar_conta" onclick="cadastrar()">Criar conta</button>
 
         </div>
     </div>
     
 </body>
 </html>
+<script>
+    function cadastrar() {
+        /* Registrando os inputs em variáveis*/
+        var login = (in_login.value).trim();
+        var email = (in_email.value).toLowerCase() ;
+        var senha = in_senha.value;
+        var confirmar = in_confirmar.value;
+
+        /* Variáveis booleanas para futuras validações nos if's */
+        var campos_preenchidos = (login == '' || email == '' || senha == ''|| confirmar == ''); 
+        var email_invalido = email.indexOf('@') == -1 && email.indexOf('.com') == -1;
+        var senha_invalida = senha != confirmar;
+        var tamanho_login = login.length < 3;
+        var login_invalido = 0;
+         
+        /* Procurando espaços em branco no nome de usuário*/
+        for (var i = 0; i < login.length ; i++) {
+            if (login[i] == " ") {
+                login_invalido++
+            }
+        }
+
+
+        /* Validações */
+        if (campos_preenchidos) {
+            alert('Você deve preencher todos os campos!')
+
+        } else if (email_invalido){
+            alert('Você deve inserir um e-mail válido.')
+
+        } else if (login_invalido > 0) {
+            alert(`Não podem haver espaços no nome de usuário! Dica: Utilize _ ou -`)
+
+        } else if (tamanho_login) {
+            alert (`O nome de usuário deve ter pelo menos três caracteres.`)
+            
+        } else if (senha_invalida) {
+        alert(`As senhas não coincidem.`)
+
+        } else {
+            window.location.href='login.html'
+
+
+        }
+      
+        
+    }
+
+</script>

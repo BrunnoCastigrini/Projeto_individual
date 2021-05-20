@@ -400,11 +400,11 @@ a {
     font-family: 'Quicksand', sans-serif;
     font-size: 18pt;
     font-weight: bolder;
-    cursor: pointer;
     background-color: #1F99D0;
 }
 
 .cad_box button:hover{
+    cursor: pointer;
     color: white;
     font-size: 20pt;
     transition: 0.3s;
