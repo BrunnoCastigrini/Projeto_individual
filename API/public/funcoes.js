@@ -1,18 +1,20 @@
+let email_usuario;
 let login_usuario;
-let nome_usuario;
+let id_usuario;
 
 function redirecionar_login() {
     window.location.href = 'login.html';
 }
 
 function verificar_autenticacao() {
+    email_usuario = sessionStorage.email_usuario_meuapp;
     login_usuario = sessionStorage.login_usuario_meuapp;
-    nome_usuario = sessionStorage.nome_usuario_meuapp;
+    id_usuario = sessionStorage.id_Usuario_meuapp;
     
-    if (login_usuario == undefined)  {
+    if (email_usuario == undefined)  {
         redirecionar_login();
     } else {
-        b_usuario.innerHTML = nome_usuario;
+        b_usuario.innerHTML = login_usuario;
         validar_sessao();
     }
     
@@ -25,7 +27,7 @@ function logoff() {
 }
 
 function validar_sessao() {
-    fetch(`/usuarios/sessao/${login_usuario}`, {cache:'no-store'})
+    fetch(`/usuarios/sessao/${email_usuario}`, {cache:'no-store'})
     .then(resposta => {
         if (resposta.ok) {
             resposta.text().then(texto => {
@@ -39,5 +41,5 @@ function validar_sessao() {
 }
 
 function finalizar_sessao() {
-    fetch(`/usuarios/sair/${login_usuario}`, {cache:'no-store'}); 
+    fetch(`/usuarios/sair/${email_usuario}`, {cache:'no-store'}); 
 }

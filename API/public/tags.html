@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags</title>
+    <link rel="stylesheet" href="css/tags.css">
+    <link rel="icon" href="img/boy2.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font-family: 'Delius', cursive; -->
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <!-- font-family: 'Domine', serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <!-- font-family: 'Quicksand', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <!--font-family: 'Montserrat', sans-serif;-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="tags.html"> <img src="img/boy3.png" alt="logo"></a>
+
+            <ul class="navbar">
+                <li class="logout"><a href="index.html">Sair</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <h2 class="tags">/tags/</h2>
+
+    <div class="mu">
+        <div class="container">
+
+            <img src="img/electric-guitar.png" onclick='mu()' alt="guitar"
+                onmouseout="this.src='img/electric-guitar.png'" onmouseover="this.src='img/guitarra2.png'">
+            <h3 onclick='mu()'>/mu/</h3>
+            <div class="txt_mu">
+                Na tag /mu/ discutimos sobre álbuns, bandas,
+                equipamentos e tudo que envolve o universo musical.
+            </div>
+
+        </div>
+    </div>
+
+    <div class="god">
+        <div class="container">
+
+            <img src="img/esoteric.png" alt="one_eye" onclick="god()" onmouseout="this.src='img/esoteric.png'"
+                onmouseover="this.src='img/esoteric2.png'">
+            <h3 onclick="god()">/god/</h3>
+            <div class="txt_god">
+                Na tag /god/ discutimos sobre religiões,
+                esoterismo, rituais, meditação e tudo que envolve
+                o mundo espiritual.
+            </div>
+
+        </div>
+    </div>
+
+    <div class="hack">
+        <div class="container">
+
+            <img src="img/spyware.png" onclick='hack()' alt="hacking" onmouseout="this.src='img/spyware.png'"
+                onmouseover="this.src='img/spyware2.png'">
+            <h3 onclick="hack()">/hack/</h3>
+            <div class="txt_hack">
+                Na tag /hack/ nós falamos sobre Cyber security, hacking,
+                pentest e compartilhamos experiências sobre a área.
+            </div>
+
+        </div>
+    </div>
+
+    <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
+
+</body>
+
+</html>
+<script>
+    let email;
+
+    function god() {
+        window.location.href = 'god.html'
+    }
+
+    function mu() {
+        window.location.href = 'mu.html'
+
+    }
+
+    function hack() {
+        window.location.href = 'hack.html'
+
+    }
+
+</script>

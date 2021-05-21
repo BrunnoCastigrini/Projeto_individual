@@ -1,243 +1,413 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-        /* SÓ COLOCAR QUANDO COLOCAR COR NO HEADER */
-    margin: 0;
-        /* SÓ COLOCAR QUANDO COLOCAR COR NO HEADER */
-        background-color: rgb(255, 95, 37);
+html {
+    scroll-behavior: smooth;
+}
+/* Scrollbar*/
+::-webkit-scrollbar{
+    width: 8px;
+    height: 20px; 
 }
 
-.container { 
-    width: 80%;
+::-webkit-scrollbar-button{
+    height: 0.1px;
+}
+::-webkit-scrollbar-track {
+    background-color: #B1B1B1;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #555555;
+    border-radius: 10px;
+}
+/* Body */
+
+body {
+   
+    margin: 0;
+}
+
+/* Header */
+
+.container {
+    width: 95%;
     margin: auto;
 }
-
-h1 {
-    margin: 0;
-    padding: 0;
+.header, .header2{
+    position: fixed;
+    width: 100%;
+    height: 20%;
 }
 
+.header img, .header2 img {
+    width: 11%;
+}
+
+.navbar {
+    list-style: none;
+    float: right;
+    width: 28%;
+}
+
+.navbar li {
+    float: left;
+    margin-right: 4%;
+    font-size: 17pt;
+    padding: 1% 2% 1% 2%;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    box-shadow: 5px 5px 9px -2px black;
+}
 a {
     text-decoration: none;
+    color: black;
 }
 
-/* CABEÇALHO */
-
-.header {
-    background-color: #232323;
-        /*overflow: auto; /* cuidado*/
-    height: 100px;
-        /*ATENÇÃO VOLTA A NAV AQUI SE SUMIR*/
-    border-bottom: 3px solid orangered;
+.sobre {
+    background-color: #FF385F;
 }
 
-.header .container {
-    height: 80px;
+.sobre :hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 19pt;
+
+}
+.entrar {
+    background-color: #936ED4;
+
 }
 
-.header .container .highlight {
-    color: orangered
+.entrar :hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 19pt;
 }
 
-.header h1 {
+.cadastrar-se{
+    background-color: #1F99D0;
+}
+
+.cadastrar-se :hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 19pt;
+}
+
+/* Seção 1 */
+
+.secao1 {
+    padding-top: 6%;
+    overflow: auto;
+    align-items: center;
+    text-align: center;
+    background-image: url(../img/gato_cama.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 5%;
+}
+
+.secao1 img {
+    width: 30%;
+    overflow: auto;
+    margin: auto;
+    margin: 3% 3% 2% 3%;
+    
+}
+
+.secao1 h3 {
+    /* font-family: 'Domine', serif; */
     margin: 0;
-    padding: 0;
-    float: left;
-        /*ATENÇÃO - VAI SUMIR A NAV*/
-    margin-top: 30px;
+    font-family: 'Delius', cursive;
+    color: white;
+    font-size: 170%;
+}
+
+.secao1 button {
+    width: 17%;
+    margin: 1% 40% 1% 40%;
+    padding: 0.2% 0 0.2% 0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 18pt;
+    box-shadow: 5px 5px 9px -2px black;
+    border-radius: 5px;
+    border: none;
+}
+
+.botao_entre {
+    background-color: #936ED4;
+}
+
+.botao_entre a:hover{
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 20pt;
+}
+
+.botao_cadastre-se {
+    background-color: #1F99D0;
+}
+
+.botao_cadastre-se a:hover{
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 20pt;
+}
+
+/* Seção 2 */
+
+.secao2 {
+    background-image: url(../img/boat-girl.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 10%;
+    overflow: auto;
+}
+
+.secao2 h2 {
+    margin: 0;
+    background-color: #F0468D;
+    color: white;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    padding: 2% 0 2% 0;
+    /* text-shadow: 2px 2px #000000; */
+}
+.secao2 span {
     color: white;
 }
 
-.header ul {
-    list-style-type: none;
-        /*ATENÇÃO - NAO É NO NAV*/
+.secao2 .div_impacto {
+    margin: 0;
+    padding-top: 8%;
+    float: left;
+    width: 50%;
+    font-size: 52pt;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.secao2 .span3{
+    padding-top: 10%;
+    width: 30%;
     float: right;
-        /*ATENÇÃO - VAI SUMIR A NAV*/
-    margin-top: 40px;
+    font-family: 'Domine', serif;
+    font-size: 20pt;
 }
 
-.header li {
-    float: left;
-        /*ATENÇÃO ORDENE OS ITENS NA MESMA ORDEM QUE ESTÃO NO HTML*/
-    margin-left: 18px;
-        /* FIM*/
+/* Seção 3 */
+
+.secao3{
+    background-image: url(../img/reading-girl.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 14%;
+    overflow: auto;
+
+}
+.secao3 h2 {
+    margin: 0;
+    background-color: #5856A4;
+    color: white;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    padding: 2% 0 2% 0;
 }
 
-.header a {
-    text-transform: uppercase;
+.secao3 .div_impacto {
+    margin: 0;
+    margin-right: 30%;
+    padding-top: 8%;
+    padding-bottom: 2%;
+    width: 70%;
+    font-size: 52pt;
+    font-family: 'Quicksand', sans-serif;
     color: white;
 }
 
-.header a:hover {
-    font-weight: bold;
+.secao3 .div_txt {
+    width: 60%;
+    font-family: 'Domine', serif;
+    font-size: 20pt;
+    color: white;
+    border-radius: 20px;
 }
 
-.header .current {
-    color: orangered;
-    font-weight: bold;
+/* Seção 4 */
+
+.footer {
+    margin: 0;
+    background-color: #1F99D0;
+    color: white;
+    text-align: center;
+    font-family: 'Delius', cursive;
+    padding: 1% 0 1% 0;
+    font-size: 13pt;
+
 }
 
-/* JUMBOTRON 
-    aka BANNER */
+.secao3 button {
+    margin: 2% 0 2% 0;
+    padding: 1% 0.5% 1% 0.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+    font-size: 18pt;
+    box-shadow: 5px 5px 9px -2px black;
+    border-radius: 5px;
+    border: none;
+    background-color: #1F99D0;
+}
 
-/*colocar tudo que está acima em header */
+.secao3 button:hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 19pt;
+}
 
-.banner {
-    height: 400px;
-    width: 100%;
-    background: url(../img/banner-fundo.jpeg);
+
+
+/*       LOGIN           */
+.body2 {
+    background-color: #555555;
+    background-image: url(../img/backgroundtile.webp);
+    background-repeat: no-repeat;
     background-size: cover;
 }
-
-.banner .container {
-    height: 400px;
+.header2 .navbar {
+    width: 13.8%;
 }
 
-.banner .texto {
-    color: gray;
+.header2 .cadastrar-se {
+    padding: 2% 4% 2% 4%;
+}
+
+.login_box {
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-    padding-top: 150px;
-
-}
-
-.banner .titulo {
-    font-size: 48px;
-    color: orangered;
-}
-
-/* NOVIDADES */
-
-.novidades {
-    background-color: #232323;
-    height: 90px;
-}
-
-.novidades .container {
-    padding: 30px 0;
-}
-
-
-.novidades button {
-    color: white;
-    background-color: orangered;
-    text-transform: uppercase;
-    width: 180px;
+    padding-top: 5.8%;
+    
+    overflow: auto;
     margin: auto;
-    display: block; /* Default de botão é inline-block. Com block, margin auto funciona*/
-    border: 0;
-    height: 38px;
-    padding: 0 20px;
+}
+
+.login_box img {
+    width: 23%;
+    margin-bottom: 2%;
+}
+
+.login_box input {
+    text-align: center;
+    background-color: rgba(255,255,255, 0.8);
+    padding: 0.3% 0.1% 0.3% 0.1%;
+    width: 23%;
+    margin: 0.5% 38.5% 0.5% 38.5%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16pt;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+}
+
+.login_box input::placeholder {
+    color: black;
+}
+
+.login_box button {
+    margin: 0.5% 38.5% 0.5% 38.5%;
+    width: 23%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18pt;
+    font-weight: bolder;
     cursor: pointer;
 }
 
-/* ICONES */
-
-.box {
-    overflow: auto;
-    background-color: #fff ;
-}
-
-.box .box-item {
-    float: left;
-    width: 33%;
-    text-align: center;
-    margin: 50px 0;
-}
-
-.box .box-item img {
-    height: 100px;
-}
-
-/* FOOTER */
-
-.footer {
-    background-color: rgb(255, 95, 37);
-    text-align: center;
-    height: 100px;
-}
-
-.footer h4 {
+.login_box button:hover {
     color: white;
-    font-weight: 100;
-    margin: 0;
-    padding-top: 40px;
+    transition: 0.3s;
+    font-size: 20pt;
 }
 
-/* SOBRE - ASSUNTOS */
+.login_box .criar_conta{
+    background-color: #1F99D0;
+}
 
-.assuntos {
-    background-color: rgb(241, 241, 241);
-    overflow: auto;
-    padding-top: 30px;
+.login_box .entrar{
+    background-color:#936ED4;
+}
+
+.login_box span {
+    font-size: 20pt;
+    font-family: 'Delius', cursive;
+}
+
+/*   CADASTRO     */
+
+.body3 {
+    background-color: #936ED4;
+    background-image: url(../img/midnight.jpg);
+    background-repeat: no-repeat;
+    background-size:cover
+}
+
+.body3 .header {
+    position: unset;
+}
+
+.cad_box{
+    width: 80%;
+    height: 300px;
+    margin: auto;
     text-align: center;
-    padding-bottom: 50px; /*aqui oh a diferença entre padding e margin*/
-    color: #3d3d3d
 }
 
-.assuntos .assunto {
-    border-bottom: 3px solid orangered;
-    background-color: white;
-    padding: 50px 15px;
-    float: left;
-    width: 40%;
-    margin-left: 5%; 
-}
-
-.assuntos h2 {
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-}
-
-.assuntos p {
-    line-height: 1.5;
-}
-
-/* SOBRE - INTEGRANTES */
-
-.nosso-time {
-    background-color: #232323;
+.cad_box input {
     text-align: center;
-    overflow: auto;
-} 
+    background-color: rgba(255,255,255, 0.9);
+    padding: 0.3% 0.1% 0.3% 0.1%;
+    width: 34%;
+    margin: 0.5% 33% 0.5% 33%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16pt;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
 
-.nosso-time h2 {
-    margin: 0;
-    padding-top: 25px;
+}
+
+.cad_box .criar_conta{
+    margin: 0.5% 33% 0.5% 33%;
+    width: 34%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px -2px black;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18pt;
+    font-weight: bolder;
+    background-color: #1F99D0;
+}
+
+.cad_box .criar_conta:hover{
+    cursor: pointer;
     color: white;
-    text-transform: uppercase;
+    font-size: 20pt;
+    transition: 0.3s;
 }
 
-.nosso-time .integrantes {
-    color: white;
-    overflow: auto;
-    margin-top: 30px;
-    padding-bottom: 35px;
+.cad_box img {
+    width: 34%;
 }
 
 
-.nosso-time .integrantes .integrante {
-    /*border: 3px solid cyan;*/
-    width: 18%;
-    float: left;
-    padding: 1%;
-    line-height: 1.5;
-}
-
-.nosso-time .integrante img {
-    height: 100px;
-    background-color: #ff8968;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-/* ASSUNTO GRANDE */
-
-.assuntos .assunto-grande {
-    border-bottom: 3px solid orangered;
-    background-color: white;
-    padding: 50px 30px;
-    float: left;
-    /* width: 450px; */
-    margin-left: 55px; 
-}
