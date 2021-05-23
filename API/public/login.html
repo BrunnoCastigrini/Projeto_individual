@@ -22,7 +22,7 @@
         rel="stylesheet">
 </head>
 
-<body class="body2">
+<body class="body2" onload="obterPublicacoes()">
     <div class="header2">
         <div class="container">
             <a href="index.html"> <img src="img/boy3.png" alt="logo"></a>
@@ -66,10 +66,10 @@
 
                 resposta.json().then(json => {
 
+                    sessionStorage.id_usuario_meuapp = json.idUsuario;
+                    sessionStorage.login_usuario_meuapp = json.nomeUsuario;
                     sessionStorage.email_usuario_meuapp = json.email;
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.id_usuario_meuapp = json.id;
-                    // sessionStorage.nome_usuario_meuapp = json.nome;
+                    // sessionStorage.nome_usuario_meuapp = json.login;
 
                     window.location.href = 'tags.html';
                 });

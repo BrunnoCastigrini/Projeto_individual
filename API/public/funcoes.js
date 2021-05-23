@@ -9,7 +9,7 @@ function redirecionar_login() {
 function verificar_autenticacao() {
     email_usuario = sessionStorage.email_usuario_meuapp;
     login_usuario = sessionStorage.login_usuario_meuapp;
-    id_usuario = sessionStorage.id_Usuario_meuapp;
+    id_usuario = sessionStorage.id_usuario_meuapp;
     
     if (email_usuario == undefined)  {
         redirecionar_login();

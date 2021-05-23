@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/hack/</title>
+
+    <link rel="stylesheet" href="css/inside.css">
+    <link rel="icon" href="img/boy2.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font-family: 'Delius', cursive; -->
+         <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <!-- font-family: 'Domine', serif; -->
+         <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <!-- font-family: 'Quicksand', sans-serif; -->
+         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+     <!--font-family: 'Montserrat', sans-serif;-->
+         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+
+            <a href="tags.html"> <img src="img/boy4.png" alt="logo"></a>
+            <ul>
+                <a href="tags.html"><li class="tags">Tags</li></a>
+                <a href="index.html"><li class="sair">Sair</li></a>
+            </ul>
+
+        </div>
+    </div>
+
+    <h1 class="titulo_tag">/hack/</h1>
+    
+    <div class="container">
+        <button onclick="show_hide()" class="criar_button" id="btn_criar">Criar post</button>
+    </div>
+
+    <div class="criar_post" id="div_criar">
+        <div class="container">
+            <h2>Criar post</h2>
+            
+            <input class="input_titulo" id="in_titulo" placeholder="Título">
+            
+            <input class="input_titulo" id="in_url" placeholder="Img URL(opcional)" type="url">
+
+            <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
+            <textarea class="input_txt" id="nova_postagem" cols="30" rows="10" placeholder="Sobre o que quer falar?" 
+            maxlength="500" onkeyup="contagem()"></textarea>
+            
+            <button onclick="postar()">Postar</button>
+        </div>
+    </div>
+
+
+    <div class="postagem">
+       <div class="container">
+
+        <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
+
+        <h2 class="b_titulo">Título</h2>
+
+        <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati ipsam similique facere quidem nesciunt!</div>
+
+        <img src="img/sad-girl.gif">
+
+
+        <b class="secao_comentarios">Comentários</b>
+
+        <div class="coment1">
+
+            <b>user_1</b>
+            <div>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo, laborum reiciendis aliquid eum quaerat.</div>
+        </div>
+        
+        <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
+        <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
+        <button class="button_comentar">Comentar</button>
+
+       </div>
+    </div>
+    
+    
+    <div class="postagem">
+        <div class="container">
+ 
+        <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
+ 
+         <h2 class="b_titulo">Título</h2>
+ 
+         <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati ipsam similique facere quidem nesciunt!</div>
+         <img src="img/clarence1.jpg">
+
+         <b class="secao_comentarios">Comentários</b>
+
+         <div class="coment1">
+             
+             <b>user_1</b>
+             <div>
+                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo, laborum reiciendis aliquid eum quaerat.</div>
+         </div>
+         
+         <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
+         <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
+         <button class="button_comentar">Comentar</button>
+ 
+        </div>
+     </div> 
+
+    
+
+     <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
+    
+</body>
+</html>
+<script src="postagem.js"></script>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/god/</title>
+
+    <link rel="stylesheet" href="css/inside.css">
+    <link rel="icon" href="img/boy2.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- font-family: 'Delius', cursive; -->
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <!-- font-family: 'Domine', serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <!-- font-family: 'Quicksand', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <!--font-family: 'Montserrat', sans-serif;-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="obterPublicacoes()">
+    <div class="header">
+        <div class="container">
+
+            <a href="tags.html"> <img src="img/boy4.png" alt="logo"></a>
+            <ul>
+                <a href="tags.html">
+                    <li class="tags">Tags</li>
+                </a>
+                <a href="index.html">
+                    <li class="sair">Sair</li>
+                </a>
+            </ul>
+
+        </div>
+    </div>
+
+    <h1 class="titulo_tag">/god/</h1>
+
+    <div class="container">
+        <button onclick="show_hide()" class="criar_button" id="btn_criar">Criar post</button>
+    </div>
+
+    <div class="criar_post" id="div_criar">
+        <div class="container">
+            <h2>Criar post</h2>
+            <form id="form_publicar" method="post" onsubmit="return publicar()">
+
+                <input class="input_titulo" name="titulo" id="in_titulo" placeholder="Título">
+
+                <input class="input_titulo" name="url" id="in_url" placeholder="Img URL" type="url" maxlength="200">
+
+                <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
+
+                <textarea class="input_txt" name="descricao" id="nova_postagem" cols="30" rows="10" placeholder="Sobre o que quer falar?"
+                    maxlength="500" onkeyup="contagem()"></textarea>
+
+                <button value="publicar" type="submit" id="btn_publicar">Publicar</button>
+
+            </form>
+        </div>
+    </div>
+    
+
+    <div class="postagem" id="feed">
+        <div class="container" id="feed_container">
+
+            <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
+
+            <h2 class="b_titulo">Título</h2>
+
+            <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in
+                quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati
+                ipsam similique facere quidem nesciunt!</div>
+            <img src="img/clarence1.jpg">
+
+            <b class="secao_comentarios">Comentários</b>
+
+            <div class="coment1">
+
+                <b>user_1</b>
+                <div>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo,
+                    laborum reiciendis aliquid eum quaerat.</div>
+            </div>
+
+            <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
+            <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
+            <button class="button_comentar">Comentar</button>
+
+        </div>
+    </div>
+
+
+
+    <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
+
+</body>
+
+</html>
+<script src="postagem.js"></script>
+<script>
+
+    function publicar() {
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        var tagAtual = sessionStorage.tag_atual_meuapp;
+
+
+        fetch(`/publicacoes/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes();
+
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function atualizarFeed(publicacoes) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
+            
+            var divPost = document.createElement("div")
+            var spanNome = document.createElement("span");
+            var h2Titulo = document.createElement("h2");
+            var divDescricao = document.createElement("div");
+            var imgURL = document.createElement("img");
+            var bComentarios = document.createElement("b");
+
+            var divComentario = document.createElement("div");
+            var bUsuarioAtual = document.createElement("b");
+            var txtComentario = document.createElement("textarea");
+            var buttonComentar = document.createElement("button");
+            // var divPublicacao = document.createElement("span")
+            // var spanNome = document.createElement("div")
+            // var divDescricao = document.createElement("div")
+
+            spanNome.innerHTML = `Postado por <b>${publicacao.nome}</b>:`;
+            h2Titulo = publicacao.titulo;
+            divDescricao.innerHTML = publicacao.descricao;
+            imgURL.src = publicacao.URL;
+            bComentarios = `Comentários`
+
+            spanNome.className = "postado_por";
+            h2Titulo.className = "b_titulo";
+            divDescricao.className = "post_txt";
+            bComentarios.className = "secao_comentarios";
+            divComentario.className = "comentario_atual";
+            bUsuarioAtual.className = "b_usuario_atual";
+            txtComentario.className = "comentario_atual_txt";
+            buttonComentar.className = "button_comentar";
+            // divPublicacao.className = "publicacao";
+            // divNome.className = "nome";
+            // divDescricao.className = "descricao";
+
+            spanNome.appendChild(divPost);
+            h2Titulo.appendChild(divPost);
+            divDescricao.appendChild(divPost);
+            imgURL.appendChild(divPost);
+            imgURL.appendChild(divPost);
+            bComentarios.appendChild(divPost);
+            divComentario.appendChild(divPost);
+            bUsuarioAtual.appendChild(div_comentario);
+            txtComentario.appendChild(divPost);
+            buttonComentar.appendChild(divPost);
+            
+            divPost.appendChild(feed_container)
+            // divPublicacao.appendChild(divNome);
+            // divPublicacao.appendChild(divDescricao);
+
+            // feed.appendChild(divPublicacao);
+        }
+    }
+
+    function obterPublicacoes() {
+        sessionStorage.tag_atual_meuapp = 2;
+        aguardar();
+        fetch("/publicacoes")
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        atualizarFeed(resposta);
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        // img_aguarde.style.visibility = 'visible';
+        // div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        // img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            // div_erro.style.visibility = 'visible';
+            // div_erro.innerHTML = resposta;
+        }
+    }
+
+    verificar_autenticacao();
+
+
+</script>
