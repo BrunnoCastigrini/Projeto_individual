@@ -4,50 +4,66 @@ USE TheBoyAndTheTiger;
 -- Tabela usuário
 
 CREATE TABLE usuario(
-    -> idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-    -> nomeUsuario VARCHAR(20),
-    -> email VARCHAR(50),
-    -> senha VARCHAR(20)
-    -> ) AUTO_INCREMENT = 1000;
+     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+     nomeUsuario VARCHAR(20),
+     email VARCHAR(50),
+     senha VARCHAR(20)
+     ) AUTO_INCREMENT = 1000;
 
 -- Tabela Tag
 
 CREATE TABLE tag(
-    -> idTag INT PRIMARY KEY,
-    -> nomeTag VARCHAR(7)
-    -> );
+     idTag INT PRIMARY KEY,
+     nomeTag VARCHAR(7)
+     );
 
 
---TABELA POSTAGEM
+--TABELA PUBLICAÇÃO
 
-CREATE TABLE postagem(
-    -> idPostagem INT AUTO_INCREMENT,
-    -> titulo VARCHAR(45),
-    -> URL VARCHAR(200),
-    -> texto VARCHAR(500),
-    -> fkTag INT,
-    -> fkUsuario INT,
-    -> FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-    -> FOREIGN KEY (fkTag) REFERENCES tag(idTag),
-    -> PRIMARY KEY (idPostagem, fkTag)
-    -> );
+CREATE TABLE publicacao(
+     idPublicacao INT AUTO_INCREMENT PRIMARY KEY,
+     titulo VARCHAR(45),
+     URL VARCHAR(200),
+     descricao VARCHAR(500),
+     fkTag INT,
+     fkUsuario INT,
+     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+     FOREIGN KEY (fkTag) REFERENCES tag(idTag),
+     PRIMARY KEY (idPostagem, fkTag)
+     );
 
 --TABELA COMENTÁRIO
 
  CREATE TABLE comentario(
-    -> idComentario INT AUTO_INCREMENT,
-    -> txtComentario VARCHAR(100),
-    -> fkPostagem INT,
-    -> fkUsuario INT,
-    -> PRIMARY KEY(idComentario, fkPostagem),
-    -> FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario),
-    -> FOREIGN KEY(fkPostagem) REFERENCES postagem(idPostagem)
-    -> );
+     idComentario INT AUTO_INCREMENT,
+     txtComentario VARCHAR(100),
+     fkPostagem INT,
+     fkUsuario INT,
+     PRIMARY KEY(idComentario, fkPostagem),
+     FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario),
+     FOREIGN KEY(fkPostagem) REFERENCES postagem(idPostagem)
+     );
 
 
 -- Inserts
 
 INSERT INTO tag VALUES
-    -> (1, 'mu'),
-    -> (2, 'god'),
-    -> (3, 'hack');
+     (1, 'mu'),
+     (2, 'god'),
+     (3, 'hack');
+
+CREATE TABLE publicacao(
+     idPublicacao INT AUTO_INCREMENT PRIMARY KEY,
+     titulo VARCHAR(45),
+     URL VARCHAR(200),
+     descricao VARCHAR(500),
+     fkTag INT,
+     fkUsuario INT
+     );
+
+CREATE TABLE comentario(
+     idComentario INT AUTO_INCREMENT PRIMARY KEY,
+     txtComentario VARCHAR(100),
+     fkPostagem INT,
+     fkUsuario INT
+     );

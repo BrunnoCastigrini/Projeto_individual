@@ -67,33 +67,8 @@
     </div>
     
 
-    <div class="postagem" id="feed">
-        <div class="container" id="feed_container">
+    <div id="feed_container">
 
-            <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
-
-            <h2 class="b_titulo">Título</h2>
-
-            <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in
-                quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati
-                ipsam similique facere quidem nesciunt!</div>
-            <img src="img/clarence1.jpg">
-
-            <b class="secao_comentarios">Comentários</b>
-
-            <div class="coment1">
-
-                <b>user_1</b>
-                <div>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo,
-                    laborum reiciendis aliquid eum quaerat.</div>
-            </div>
-
-            <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
-            <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
-            <button class="button_comentar">Comentar</button>
-
-        </div>
     </div>
 
 
@@ -140,58 +115,65 @@
         feed.innerHTML = "";
         for (let i = 0; i < publicacoes.length; i++) {
             var publicacao = publicacoes[i];
+             
+            // Publicacação
+              var divPublicacao = document.createElement("div")
+              var divContainer = document.createElement("div")
+              var spanNome = document.createElement("span")
+              var bTitulo = document.createElement("h2")
+              var divDescricao = document.createElement("div")
+              var Img = document.createElement("img")
+            // comentários
+              var bComentarios = document.createElement("b")
+              var divComentarioAtual = document.createElement("div")
+              var bUsuarioAtual = document.createElement("b")
+              var textArea = document.createElement("textarea")
+              var buttonComentar = document.createElement("button")
             
-            var divPost = document.createElement("div")
-            var spanNome = document.createElement("span");
-            var h2Titulo = document.createElement("h2");
-            var divDescricao = document.createElement("div");
-            var imgURL = document.createElement("img");
-            var bComentarios = document.createElement("b");
+             
+            // Mudando o conteúdo
+              spanNome.innerHTML = `Postado por <b>${publicacao.nomeUsuario}:</b>`;
+              bTitulo.innerHTML = publicacao.titulo;
+              divDescricao.innerHTML = publicacao.descricao;
+              Img.src = publicacao.URL;
+            //comentários
+              bComentarios.innerHTML = `Comentários`;
+              divComentarioAtual.innerHTML = `Comentar como `;
+              bUsuarioAtual.innerHTML = `${publicacao.nomeUsuario}`;
+              buttonComentar.innerHTML = `Comentar`
 
-            var divComentario = document.createElement("div");
-            var bUsuarioAtual = document.createElement("b");
-            var txtComentario = document.createElement("textarea");
-            var buttonComentar = document.createElement("button");
-            // var divPublicacao = document.createElement("span")
-            // var spanNome = document.createElement("div")
-            // var divDescricao = document.createElement("div")
 
-            spanNome.innerHTML = `Postado por <b>${publicacao.nome}</b>:`;
-            h2Titulo = publicacao.titulo;
-            divDescricao.innerHTML = publicacao.descricao;
-            imgURL.src = publicacao.URL;
-            bComentarios = `Comentários`
-
-            spanNome.className = "postado_por";
-            h2Titulo.className = "b_titulo";
-            divDescricao.className = "post_txt";
-            bComentarios.className = "secao_comentarios";
-            divComentario.className = "comentario_atual";
-            bUsuarioAtual.className = "b_usuario_atual";
-            txtComentario.className = "comentario_atual_txt";
-            buttonComentar.className = "button_comentar";
-            // divPublicacao.className = "publicacao";
-            // divNome.className = "nome";
-            // divDescricao.className = "descricao";
-
-            spanNome.appendChild(divPost);
-            h2Titulo.appendChild(divPost);
-            divDescricao.appendChild(divPost);
-            imgURL.appendChild(divPost);
-            imgURL.appendChild(divPost);
-            bComentarios.appendChild(divPost);
-            divComentario.appendChild(divPost);
-            bUsuarioAtual.appendChild(div_comentario);
-            txtComentario.appendChild(divPost);
-            buttonComentar.appendChild(divPost);
+            // Dando as classes/estilização
+              divPublicacao.className = "postagem";
+              divContainer.className = "container";
+              spanNome.className = "postado_por";
+              divDescricao.className = "post_txt";
+              bTitulo.className = "b_titulo";
+            //Comentários
+              bComentarios.className = "secao_comentarios";
+              divComentarioAtual.className = "comentario_atual";
+              bUsuarioAtual.className = "b_usuario_atual";
+              textArea.className = "comentario_atual_txt";
+              buttonComentar.className = "button_comentar";
             
-            divPost.appendChild(feed_container)
-            // divPublicacao.appendChild(divNome);
-            // divPublicacao.appendChild(divDescricao);
 
-            // feed.appendChild(divPublicacao);
+            // Colocando um elemento dentro do outro
+              divPublicacao.appendChild(divContainer);
+              divContainer.appendChild(spanNome);
+              divContainer.appendChild(bTitulo);
+              divContainer.appendChild(divDescricao);
+              divContainer.appendChild(Img);
+
+              feed.appendChild(divPublicacao);
+            // Comentários
+              divContainer.appendChild(bComentarios);  
+              divContainer.appendChild(divComentarioAtual);  
+              divComentarioAtual.appendChild(bUsuarioAtual);
+              divContainer.appendChild(textArea);  
+              divContainer.appendChild(buttonComentar);  
         }
     }
+
 
     function obterPublicacoes() {
         sessionStorage.tag_atual_meuapp = 2;

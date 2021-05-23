@@ -212,7 +212,7 @@ body {
     font-size: 15pt;
 }
 
-.postagem h2{
+.postagem .b_titulo{
     margin: 1% 0% 1% 0%;
     font-size: 21pt;
 }
@@ -259,6 +259,7 @@ body {
 
 .secao_comentarios{
     font-size: 20pt;
+    font-weight: 500;
 }
 
 .coment1 {
