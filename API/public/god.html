@@ -57,15 +57,15 @@
 
                 <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
 
-                <textarea class="input_txt" name="descricao" id="nova_postagem" cols="30" rows="10" placeholder="Sobre o que quer falar?"
-                    maxlength="500" onkeyup="contagem()"></textarea>
+                <textarea class="input_txt" name="descricao" id="nova_postagem" cols="30" rows="10"
+                    placeholder="Sobre o que quer falar?" maxlength="500" onkeyup="contagem()"></textarea>
 
                 <button value="publicar" type="submit" id="btn_publicar">Publicar</button>
 
             </form>
         </div>
     </div>
-    
+
 
     <div id="feed_container">
 
@@ -82,95 +82,95 @@
 <script>
 
     function publicar() {
-        console.log("entrei!")
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(form_publicar));
-        var idUsuario = sessionStorage.id_usuario_meuapp;
-        var tagAtual = sessionStorage.tag_atual_meuapp;
+            console.log("entrei!")
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_publicar));
+            var idUsuario = sessionStorage.id_usuario_meuapp;
+            var tagAtual = sessionStorage.tag_atual_meuapp;
 
 
-        fetch(`/publicacoes/publicar/${idUsuario}`, {
-            method: "POST",
-            body: formulario
-        }).then(resposta => {
+            fetch(`/publicacoes/publicar/${idUsuario}`, {
+                method: "POST",
+                body: formulario
+            }).then(resposta => {
 
-            if (resposta.ok) {
-                obterPublicacoes();
+                if (resposta.ok) {
+                    obterPublicacoes();
 
-                finalizarAguardar();
-            } else {
-                console.log('Erro ao publicar!');
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-        });
+                    finalizarAguardar();
+                } else {
+                    console.log('Erro ao publicar!');
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+            });
 
-        return false;
-    }
+            return false;
+        }
 
     function atualizarFeed(publicacoes) {
         var feed = document.getElementById("feed_container");
         feed.innerHTML = "";
         for (let i = 0; i < publicacoes.length; i++) {
             var publicacao = publicacoes[i];
-             
+
             // Publicacação
-              var divPublicacao = document.createElement("div")
-              var divContainer = document.createElement("div")
-              var spanNome = document.createElement("span")
-              var bTitulo = document.createElement("h2")
-              var divDescricao = document.createElement("div")
-              var Img = document.createElement("img")
+            var divPublicacao = document.createElement("div")
+            var divContainer = document.createElement("div")
+            var spanNome = document.createElement("span")
+            var bTitulo = document.createElement("h2")
+            var divDescricao = document.createElement("div")
+            var Img = document.createElement("img")
             // comentários
-              var bComentarios = document.createElement("b")
-              var divComentarioAtual = document.createElement("div")
-              var bUsuarioAtual = document.createElement("b")
-              var textArea = document.createElement("textarea")
-              var buttonComentar = document.createElement("button")
-            
-             
+            var bComentarios = document.createElement("b")
+            var divComentarioAtual = document.createElement("div")
+            var bUsuarioAtual = document.createElement("b")
+            var textArea = document.createElement("textarea")
+            var buttonComentar = document.createElement("button")
+
+
             // Mudando o conteúdo
-              spanNome.innerHTML = `Postado por <b>${publicacao.nomeUsuario}:</b>`;
-              bTitulo.innerHTML = publicacao.titulo;
-              divDescricao.innerHTML = publicacao.descricao;
-              Img.src = publicacao.URL;
+            spanNome.innerHTML = `Postado por <b>${publicacao.nomeUsuario}:</b>`;
+            bTitulo.innerHTML = publicacao.titulo;
+            divDescricao.innerHTML = publicacao.descricao;
+            Img.src = publicacao.URL;
             //comentários
-              bComentarios.innerHTML = `Comentários`;
-              divComentarioAtual.innerHTML = `Comentar como `;
-              bUsuarioAtual.innerHTML = `${publicacao.nomeUsuario}`;
-              buttonComentar.innerHTML = `Comentar`
+            bComentarios.innerHTML = `Comentários`;
+            divComentarioAtual.innerHTML = `Comentar como `;
+            bUsuarioAtual.innerHTML = `${publicacao.nomeUsuario}`;
+            buttonComentar.innerHTML = `Comentar`
 
 
             // Dando as classes/estilização
-              divPublicacao.className = "postagem";
-              divContainer.className = "container";
-              spanNome.className = "postado_por";
-              divDescricao.className = "post_txt";
-              bTitulo.className = "b_titulo";
+            divPublicacao.className = "postagem";
+            divContainer.className = "container";
+            spanNome.className = "postado_por";
+            divDescricao.className = "post_txt";
+            bTitulo.className = "b_titulo";
             //Comentários
-              bComentarios.className = "secao_comentarios";
-              divComentarioAtual.className = "comentario_atual";
-              bUsuarioAtual.className = "b_usuario_atual";
-              textArea.className = "comentario_atual_txt";
-              buttonComentar.className = "button_comentar";
-            
+            bComentarios.className = "secao_comentarios";
+            divComentarioAtual.className = "comentario_atual";
+            bUsuarioAtual.className = "b_usuario_atual";
+            textArea.className = "comentario_atual_txt";
+            buttonComentar.className = "button_comentar";
+
 
             // Colocando um elemento dentro do outro
-              divPublicacao.appendChild(divContainer);
-              divContainer.appendChild(spanNome);
-              divContainer.appendChild(bTitulo);
-              divContainer.appendChild(divDescricao);
-              divContainer.appendChild(Img);
+            divPublicacao.appendChild(divContainer);
+            divContainer.appendChild(spanNome);
+            divContainer.appendChild(bTitulo);
+            divContainer.appendChild(divDescricao);
+            divContainer.appendChild(Img);
 
-              feed.appendChild(divPublicacao);
+            feed.appendChild(divPublicacao);
             // Comentários
-              divContainer.appendChild(bComentarios);  
-              divContainer.appendChild(divComentarioAtual);  
-              divComentarioAtual.appendChild(bUsuarioAtual);
-              divContainer.appendChild(textArea);  
-              divContainer.appendChild(buttonComentar);  
+            divContainer.appendChild(bComentarios);
+            divContainer.appendChild(divComentarioAtual);
+            divComentarioAtual.appendChild(bUsuarioAtual);
+            divContainer.appendChild(textArea);
+            divContainer.appendChild(buttonComentar);
         }
     }
 
