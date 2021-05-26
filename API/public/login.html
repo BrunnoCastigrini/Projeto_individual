@@ -22,7 +22,7 @@
         rel="stylesheet">
 </head>
 
-<body class="body2" onload="obterPublicacoes()">
+<body class="body2" onload="mudar()" id="body_2">
     <div class="header2">
         <div class="container">
             <a href="index.html"> <img src="img/boy3.png" alt="logo"></a>
@@ -104,5 +104,21 @@
     function criar_conta() {
         window.location.href = 'cadastro.html';
 
+    }
+
+    function mudar() {
+        var sorteio = parseInt(Math.random()*3+1);
+
+        if (sorteio == 1) {
+            body_2.style.backgroundImage = "url(img/skyrim1.jpg)";
+            
+        } else if (sorteio == 2) {
+            body_2.style.backgroundImage = "url(img/skyrim2.jpg)";
+            
+        } else {
+            body_2.style.backgroundImage = "url(img/skyrim3.jpg)";
+
+        }
+        
     }
 </script>

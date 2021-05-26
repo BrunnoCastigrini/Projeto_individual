@@ -43,8 +43,9 @@ body {
 .header ul {
     list-style: none;
     float: right;
-    width: 17%;
+    width: 26%;
     text-align: center;
+    margin-top: 0;
 }
 
 .header img {
@@ -54,7 +55,7 @@ body {
 
 .header li{
     float: left;
-    margin-right: 14%;
+    margin-top: 2%;
     font-size: 17pt;
     padding: 2% 5% 2% 5%;
     border-radius: 5px;
@@ -73,13 +74,32 @@ body {
     color: white;
     font-size: 20pt;
 }
+.header .li_img {
+    float: right;
+    margin-right: 8%;
+    padding: 0% 0% 2% 0%;
+    width: 19%;
+}
+
+.header .display_nome_usuario {
+    display: none;
+    font-size: 92%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    background-color: #cfcfcf; 
+    border-radius: 6px;
+    padding: 1% 1% 1% 1%;
+    margin: 0 0 0 66%;
+}
 
 .tags{
     background-color: #FF385F;
+    margin-right: 14%;
 }
 
 .sair{
     background-color: #1F99D0;
+    margin-right: 5%;
 }
 
 /* Título */
@@ -228,6 +248,7 @@ body {
 }
 
 /* Comentários */
+
 .comentario_atual{
     margin: 5% 0 0 0;
     font-size: 14pt;
@@ -258,6 +279,8 @@ body {
 }
 
 .secao_comentarios{
+    width: 20%;
+    margin-right: 80%;
     font-size: 20pt;
     font-weight: 500;
 }

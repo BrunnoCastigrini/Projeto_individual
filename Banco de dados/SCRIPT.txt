@@ -7,7 +7,7 @@ CREATE TABLE usuario(
      idUsuario INT PRIMARY KEY AUTO_INCREMENT,
      nomeUsuario VARCHAR(20),
      email VARCHAR(50),
-     senha VARCHAR(20)
+     senha VARCHAR(33)
      ) AUTO_INCREMENT = 1000;
 
 -- Tabela Tag

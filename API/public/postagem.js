@@ -12,6 +12,19 @@ function contagem() {
     b_tamanho.innerHTML = tamanho;
 }
 
+function mostrar() {
+    spanNome_usuario.style.display = 'inline';
+
+}
+function esconder() {
+    spanNome_usuario.style.display = 'none';
+    
+}
+
+function nomear() {
+    spanNome_usuario.innerHTML = sessionStorage.login_usuario_meuapp;
+    
+}
 
 // function publicar() {
 //      var titulo = in_titulo.value;

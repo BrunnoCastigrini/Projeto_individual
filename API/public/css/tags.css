@@ -20,7 +20,8 @@
 /* body */
 body {
     margin: 0;
-    background-image: url(../img/berserk.png);
+    /* background-image: url(../img/berserk.png); */
+    background-image: url(../img/berserk-background.jpeg);
     background-color: #5856A4;   
     background-repeat: no-repeat;
     background-size: cover;
@@ -36,24 +37,28 @@ body {
 .header {
     margin: 0;
     overflow: auto;
+    position: fixed;
 }
 
 .header ul {
     list-style: none;
     float: right;
-    width: 7%;
+    width: 17%;
     text-align: center;
+    margin-top: 0;
 }
 
 .header img {
     width: 11%;
     float: left;
+    /* margin-top: 5%; */
 }
 
 .header .logout {
     float: left;
     background-color: #936ED4;
     margin-right: 4%;
+    margin-top: 5%;
     font-size: 17pt;
     padding: 2% 10% 2% 10%;
     border-radius: 5px;
@@ -61,6 +66,24 @@ body {
     font-weight: bolder;
     box-shadow: 5px 5px 9px -2px black;
     
+}
+
+.header .li_img {
+    float: right;
+    margin-right: 4%;
+    padding: 0% 10% 2% 10%;
+    width: 28%;
+}
+
+.header .display_nome_usuario {
+    display: none;
+    font-size: 92%;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    background-color: #cfcfcf; 
+    border-radius: 6px;
+    padding: 2% 1% 1% 2%;
+    margin: 0 0 0 45%;
 }
 
 .header a{
@@ -85,22 +108,27 @@ h2 {
     text-align: center;
     width: 15%;
     margin: 0 42.5% 8% 42.5%;
-    padding-top: 1%;
+    padding-top: 7%;
     font-family: 'Domine', serif;
     font-weight: bolder;
-    font-size: 30pt;
+    font-size: 40pt;
     /* border-bottom: 3px solid black; */
-    color: black;
+    color: #A93636;
     /* overflow: auto; */
+}
+
+.div_tags {
+    overflow: auto;
+    margin: 0% 0% 5% 0%;
 }
 
 /* /mu/ */
 .mu {
     text-align: center;
     width: 23%;
-    height: 50vh;
+    height: 60vh;
      border-radius: 6px;
-     border: 5px ridge black;
+     border: 5px outset #1F99D0;
      margin: 0% 0% 0% 6.75%;
      background-color: white;
      float: left;
@@ -111,7 +139,7 @@ h2 {
     width: 40%;
     border-radius: 100px;
     border: 5px solid black;
-    margin-top: -19%;
+    margin-top: 5%;
     background-color: white;
     cursor: pointer;
 }
@@ -133,7 +161,7 @@ h2 {
     padding-top: 8%;
     font-family: 'Domine', serif;
     /* padding-bottom: 20%; */
-    font-size: 15pt;
+    font-size: 14pt;
 }
 
 /* GOD */
@@ -141,9 +169,9 @@ h2 {
 .god {
     text-align: center;
     width: 23%;
-    height: 50vh;
+    height: 60vh;
      border-radius: 6px;
-     border: 5px ridge black;
+     border: 5px outset #936ED4;
      margin: 0% 0% 0% 7.75%;
      background-color: white;
      float: left;
@@ -154,7 +182,7 @@ h2 {
     width: 40%;
     border-radius: 100px;
     border: 5px solid black;
-    margin-top: -19%;
+    margin-top: 5%;
     background-color: white;
     cursor: pointer;
 }
@@ -177,7 +205,7 @@ h2 {
     padding-top: 8%;
     font-family: 'Domine', serif;
     /* padding-bottom: 20%; */
-    font-size: 15pt;
+    font-size: 14pt;
 }
 
 /* /hack/ */
@@ -186,18 +214,18 @@ h2 {
     text-align: center;
     width: 23%;
      border-radius: 6px;
-     border: 5px ridge black;
-     margin: 0% 0% 7% 7.75%;
+     border: 5px outset #FF385F;
+     margin: 0% 0% 0% 7.75%;
      background-color: white;
      float: left;
-     height: 50vh;
+     height: 60vh;
 }
 
 .hack img {
     width: 40%;
     border-radius: 100px;
     border: 5px solid black;
-    margin-top: -19%;
+    margin-top: 5%;
     background-color: white;
     cursor: pointer;
 }
@@ -220,10 +248,31 @@ h2 {
     padding-top: 8%;
     font-family: 'Domine', serif;
     /* padding-bottom: 20%; */
-    font-size: 15pt;
+    font-size: 14pt;
+}
+.transicao_para_o_grafico {
+    margin: 0;
+    background-color: #F0468D;
+    color: white;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    padding: 2% 0 2% 0;
+}
+
+.background-grafico {
+    background-color: #5856A4;
+    background-image: url(../img/caska-eyes.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-bottom: 5%;
+}
+
+.meu-grafico {
+    width: 80%;
+    margin: 0% 10% 0% 10%;
 }
 .footer {
-    
     float: right;
     width: 100%;
     margin: 0;

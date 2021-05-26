@@ -277,7 +277,8 @@ a {
 /*       LOGIN           */
 .body2 {
     background-color: #555555;
-    background-image: url(../img/backgroundtile.webp);
+    /* background-image: url(../img/backgroundtile.webp); */
+    background-image: url(../img/skyrim1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -294,7 +295,6 @@ a {
     background-size: cover;
     text-align: center;
     padding-top: 5.8%;
-    
     overflow: auto;
     margin: auto;
 }

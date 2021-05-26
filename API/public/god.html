@@ -35,6 +35,8 @@
                 <a href="index.html">
                     <li class="sair">Sair</li>
                 </a>
+                <img class="li_img" src="https://image.flaticon.com/icons/png/512/276/276010.png" alt="imagem padrão de usuário" onmouseover="mostrar()" onmouseout="esconder()">
+                <span class="display_nome_usuario" id="spanNome_usuario">Nome Usuário</span>
             </ul>
 
         </div>
@@ -82,6 +84,7 @@
 <script>
 
     function publicar() {
+            div_criar.style.display = 'none';
             console.log("entrei!")
             aguardar();
             var formulario = new URLSearchParams(new FormData(form_publicar));
@@ -108,6 +111,9 @@
             });
 
             return false;
+            nova_postagem.value = " ";
+            in_url.value = " ";
+            in_titulo.value = " ";
         }
 
     function atualizarFeed(publicacoes) {
@@ -139,7 +145,7 @@
             //comentários
             bComentarios.innerHTML = `Comentários`;
             divComentarioAtual.innerHTML = `Comentar como `;
-            bUsuarioAtual.innerHTML = `${publicacao.nomeUsuario}`;
+            bUsuarioAtual.innerHTML = `${sessionStorage.login_usuario_meuapp}`;
             buttonComentar.innerHTML = `Comentar`
 
 
@@ -176,6 +182,7 @@
 
 
     function obterPublicacoes() {
+        nomear()
         sessionStorage.tag_atual_meuapp = 2;
         aguardar();
         fetch("/publicacoes")
