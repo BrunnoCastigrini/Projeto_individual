@@ -4,7 +4,6 @@ function show_hide() {
 
 }
 
-
 function contagem() {
     var campo_texto = nova_postagem.value;
     var tamanho = campo_texto.length;

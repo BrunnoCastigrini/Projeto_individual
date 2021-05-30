@@ -4,12 +4,13 @@ var sequelize = require('../models').sequelize;
 var Publicacao = require('../models').Publicacao;
 
 /* ROTA QUE RECUPERA CRIA UMA PUBLICAÇÃO */
-router.post('/publicar/:idUsuario',function(req, res, next) {
+router.post('/publicar/:idUsuario/:tagAtual',function(req, res, next) {
     console.log("Iniciando Publicação...")
 
 	let idUsuario = req.params.idUsuario;
     // let tagAtual = req.params.sessionStorage.getItem('tag_atual_meuapp');
-    let tagAtual = 2;
+    let tagAtual = req.params.tagAtual;
+    console.log(idUsuario, tagAtual)
 
     Publicacao.create({
         titulo: req.body.titulo,
@@ -28,7 +29,8 @@ router.post('/publicar/:idUsuario',function(req, res, next) {
 })
 
 /* ROTA QUE RECUPERA TODAS AS PUBLICAÇÕES */
-router.get('/', function(req, res, next) {
+router.get('/:tagAtual', function(req, res, next) {
+    let tagAtual = req.params.tagAtual;
 	console.log('Recuperando todas as publicações');
 	
     let instrucaoSql = `SELECT 
@@ -39,6 +41,7 @@ router.get('/', function(req, res, next) {
     FROM publicacao
     INNER JOIN usuario
     ON Publicacao.fkUsuario = Usuario.idUsuario
+    WHERE fkTag = ${tagAtual}
     ORDER BY publicacao.idPublicacao DESC`;
 
 	sequelize.query(instrucaoSql, {

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/tags.css">
     <link rel="icon" href="img/boy2.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="postagem.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- font-family: 'Delius', cursive; -->
@@ -23,13 +25,13 @@
         rel="stylesheet">
 </head>
 
-<body onload="nomear()">
+<body onload="obterGrafico()">
     <div class="header">
         <div class="container">
             <a href="tags.html"> <img src="img/boy3.png" alt="logo"></a>
 
             <ul class="navbar">
-                <li class="logout"><a href="index.html">Sair</a></li>
+                <li class="logout" onclick="logoff()"><a href="index.html">Sair</a></li>
                 <img class="li_img" src="https://image.flaticon.com/icons/png/512/276/276010.png"
                     alt="imagem padrão de usuário" onmouseover="mostrar()" onmouseout="esconder()">
                 <span class="display_nome_usuario" id="spanNome_usuario">Nome Usuário</span>
@@ -45,9 +47,9 @@
         <div class="mu">
             <div class="container">
 
-                <img src="img/electric-guitar.png" onclick='mu()' alt="guitar"
+                <img src="img/electric-guitar.png" onclick='goTo_mu()' alt="guitar"
                     onmouseout="this.src='img/electric-guitar.png'" onmouseover="this.src='img/guitarra2.png'">
-                <h3 onclick='mu()'>/mu/</h3>
+                <h3 onclick='goTo_mu()'>/mu/</h3>
                 <div class="txt_mu">
                     Na tag /mu/ discutimos sobre álbuns, bandas,
                     equipamentos e tudo que envolve o universo musical.
@@ -59,9 +61,9 @@
         <div class="god">
             <div class="container">
 
-                <img src="img/esoteric.png" alt="one_eye" onclick="god()" onmouseout="this.src='img/esoteric.png'"
+                <img src="img/esoteric.png" alt="one_eye" onclick="goTo_god()" onmouseout="this.src='img/esoteric.png'"
                     onmouseover="this.src='img/esoteric2.png'">
-                <h3 onclick="god()">/god/</h3>
+                <h3 onclick="goTo_god()">/god/</h3>
                 <div class="txt_god">
                     Na tag /god/ discutimos sobre religiões,
                     esoterismo, rituais, meditação e tudo que envolve
@@ -73,53 +75,49 @@
 
         <div class="hack">
             <div class="container">
-    
-                <img src="img/spyware.png" onclick='hack()' alt="hacking" onmouseout="this.src='img/spyware.png'"
+
+                <img src="img/spyware.png" onclick='goTo_hack()' alt="hacking" onmouseout="this.src='img/spyware.png'"
                     onmouseover="this.src='img/spyware2.png'">
-                <h3 onclick="hack()">/hack/</h3>
+                <h3 onclick="goTo_hack()">/hack/</h3>
                 <div class="txt_hack">
                     Na tag /hack/ nós falamos sobre Cyber security, hacking,
                     pentest e compartilhamos experiências sobre a área.
                 </div>
-    
+
             </div>
         </div>
 
     </div>
 
-  
+
 
     <h2 class="transicao_para_o_grafico">"Por onde começar?"</h2>
 
     <div class="background-grafico">
         <div class="meu-grafico">
-            <!--Gráfico virá aqui-->
             <canvas id="myChart"></canvas>
         </div>
     </div>
 
-    <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
+    <h2 class="footer"> <a href="https://tecchicken.atlassian.net/servicedesk/customer/portal/3">Ajuda?</a> <br>
+        TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
 
 </body>
 
 </html>
 <script>
     let email;
-    function nomear() {
-        spanNome_usuario.innerHTML = sessionStorage.login_usuario_meuapp;
 
-    }
-
-    function god() {
+    function goTo_god() {
         window.location.href = 'god.html'
     }
 
-    function mu() {
+    function goTo_mu() {
         window.location.href = 'mu.html'
 
     }
 
-    function hack() {
+    function goTo_hack() {
         window.location.href = 'hack.html'
 
     }
@@ -132,81 +130,81 @@
 
     }
 
-    // Gráfico //
 
-    // ctx é o contexto. Onde é para o gráfico ser renderizado? 
-    // Na div myChart! Vamos selecioná-la por getElementById
-    var ctx = document.getElementById('myChart');
+    function obterGrafico() {
+        fetch(`/graficos/grafico`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // console.log(resposta[0])
+                        // console.log(resposta)
+                        var mu;
+                        var god;
+                        var hack;
 
-    // ao criar um new Chart, colocamos ->
-    // (contexto, { type, data e options} )
-    var meuGrafico = new Chart(ctx, {
-        // TYPE -> qual o tipo do gráfico? será um gráfico de barras? linhas? define aqui
-        type: 'doughnut',
+                        mu = resposta[0].mu;
+                        god = resposta[0].god;
+                        hack = resposta[0].hack;
 
-        // DATA -> os dados renderizados no gráfico:
-        data: {
-            // Informações em Eixo X
-            labels: ["/mu/", "/god/", "/hack/"],
-            // Tamanho da fonte
-            fontSize: 40,
-            // Datasets -> grupos de dados!
-            datasets: [
-                // Primeiro dataset    
-                {
-                    // Qual o título deste dataset?
-                    label: "tags",
-                    // Dados? Lembre-se, respectivos a labels.
-                    data: [4, 6, 10],
-                    // expessura da linha
-                    borderWidth: 5,
-                    // cor da linha - em rgba, a é a opacidade.
-                    // 1 = 100% // 0.5 = 50%
-                    borderColor: '#FFFFFF',
-                    // cor de "fundo" dos dados na tela. transparent = sem cor.
-                    backgroundColor: ['#1F99D0', '#936ED4', '#FF385F'],
-                },
-            ]
-        },
+                        // GRÁFICO //
+                        var ctx = document.getElementById('myChart');
 
-        // OPTIONS -> Opções globais
-        options: {
+                        var meuGrafico = new Chart(ctx, {
+                            type: 'doughnut',
 
-            title: {
-                // mostrar titulo?
-                display: true,
-                // tamanho do texto
-                fontSize: 20,
-                // texto no titulo
-                text: "Tags com mais publicacações",
-                // onde? right? left? top?
-                position: 'top',
-            },
-            legend: {
-                // mostrar legenda?
-                display: true,
-                // ao contrario? (dataset 1 depois de 2)
-                reverse: true,
-                // onde?
-                position: 'top',
+                            data: {
+                                labels: ["/mu/", "/god/", "/hack/"],
+                                fontSize: 40,
+                                datasets: [
+                                    {
+                                        label: "tags",
+                                        data: [mu, god, hack],
+                                        borderWidth: 5,
+                                        borderColor: '#FFFFFF',
+                                        backgroundColor: ['#1F99D0', '#936ED4', '#FF385F'],
+                                    },
+                                ]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    fontSize: 20,
+                                    text: "Tags com mais publicacações",
+                                    position: 'top',
+                                },
+                                legend: {
+                                    display: true,
+                                    reverse: true,
+                                    position: 'top',
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 50,
+                                        top: 50,
+                                    },
+                                }
+                            }
+                        })
 
-            },
-            layout: {
-                padding: {
-                    // padding do grafico, pode add right e bottom também
-                    left: 50,
-                    top: 50,
+                        Chart.defaults.global.defaultFontColor = "#FFFFFF";
+                        Chart.defaults.global.defaultFontSize = 15;
+                        Chart.defaults.global.defaultFontFamily = "'Quicksand', sans-serif";
+                    });
+                } else {
 
-                },
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do gráfico: ${error.message}`);
+            });
 
-            }
-        }
-    })
+        
+    }
+    nomear();
+    verificar_autenticacao();
 
-    // mudando cor de fonte de tudo
-    Chart.defaults.global.defaultFontColor = "#FFFFFF";
-    Chart.defaults.global.defaultFontSize = 15;
-    Chart.defaults.global.defaultFontFamily = "'Quicksand', sans-serif";
 
 
 </script>

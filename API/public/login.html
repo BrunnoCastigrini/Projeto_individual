@@ -69,7 +69,6 @@
                     sessionStorage.id_usuario_meuapp = json.idUsuario;
                     sessionStorage.login_usuario_meuapp = json.nomeUsuario;
                     sessionStorage.email_usuario_meuapp = json.email;
-                    // sessionStorage.nome_usuario_meuapp = json.login;
 
                     window.location.href = 'tags.html';
                 });
@@ -77,6 +76,7 @@
             } else {
 
                 console.log('Erro de login!');
+                alert('Login ou senha incorretos!!')
 
                 resposta.text().then(texto => {
                     console.error(texto);

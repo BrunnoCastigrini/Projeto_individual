@@ -253,6 +253,16 @@ a {
 
 }
 
+.footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer a:hover{
+    transition: 0.2s;
+    color: #021A37;
+}
+
 .secao3 button {
     margin: 2% 0 2% 0;
     padding: 1% 0.5% 1% 0.5%;
@@ -277,8 +287,6 @@ a {
 /*       LOGIN           */
 .body2 {
     background-color: #555555;
-    /* background-image: url(../img/backgroundtile.webp); */
-    background-image: url(../img/skyrim1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }

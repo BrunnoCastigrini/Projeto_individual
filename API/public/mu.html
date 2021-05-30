@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,32 +9,42 @@
 
     <link rel="stylesheet" href="css/inside.css">
     <link rel="icon" href="img/boy2.png">
+    <script type="text/javascript" src="funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- font-family: 'Delius', cursive; -->
-         <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <!-- font-family: 'Domine', serif; -->
-         <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
     <!-- font-family: 'Quicksand', sans-serif; -->
-         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
-     <!--font-family: 'Montserrat', sans-serif;-->
-         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <!--font-family: 'Montserrat', sans-serif;-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300;1,500&display=swap"
+        rel="stylesheet">
 </head>
-<body>
+
+<body onload="obterPublicacoes()">
     <div class="header">
         <div class="container">
 
             <a href="tags.html"> <img src="img/boy4.png" alt="logo"></a>
             <ul>
-                <a href="tags.html"><li class="tags">Tags</li></a>
-                <a href="index.html"><li class="sair">Sair</li></a>
+                <a href="tags.html">
+                    <li class="tags">Tags</li>
+                </a>
+                <a href="index.html" onclick="logoff()">
+                    <li class="sair">Sair</li>
+                </a>
+                <img class="li_img" src="https://image.flaticon.com/icons/png/512/276/276010.png" alt="imagem padrão de usuário" onmouseover="mostrar()" onmouseout="esconder()">
+                <span class="display_nome_usuario" id="spanNome_usuario">Nome Usuário</span>
             </ul>
 
         </div>
     </div>
 
     <h1 class="titulo_tag">/mu/</h1>
-    
+
     <div class="container">
         <button onclick="show_hide()" class="criar_button" id="btn_criar">Criar post</button>
     </div>
@@ -41,79 +52,190 @@
     <div class="criar_post" id="div_criar">
         <div class="container">
             <h2>Criar post</h2>
-            
-            <input class="input_titulo" id="in_titulo" placeholder="Título">
-            
-            <input class="input_titulo" id="in_url" placeholder="Img URL(opcional)" type="url">
+            <form id="form_publicar" method="post" onsubmit="return publicar()">
 
-            <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
-            <textarea class="input_txt" id="nova_postagem" cols="30" rows="10" placeholder="Sobre o que quer falar?" 
-            maxlength="500" onkeyup="contagem()"></textarea>
-            
-            <button onclick="postar()">Postar</button>
+                <input class="input_titulo" name="titulo" id="in_titulo" placeholder="Título">
+
+                <input class="input_titulo" name="url" id="in_url" placeholder="Img URL" type="url" maxlength="200">
+
+                <span class="tamanho_maximo">Tamanho máximo: <b id="b_tamanho">0</b><b>/500</b></span>
+
+                <textarea class="input_txt" name="descricao" id="nova_postagem" cols="30" rows="10"
+                    placeholder="Sobre o que quer falar?" maxlength="500" onkeyup="contagem()"></textarea>
+
+                <button value="publicar" type="submit" id="btn_publicar">Publicar</button>
+
+            </form>
         </div>
     </div>
 
-
-    <div class="postagem">
-       <div class="container">
-
-        <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
-
-        <h2 class="b_titulo">Título</h2>
-
-        <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati ipsam similique facere quidem nesciunt!</div>
-
-        <img src="img/sad-girl.gif">
-
-
-        <b class="secao_comentarios">Comentários</b>
-
-        <div class="coment1">
-
-            <b>user_1</b>
-            <div>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo, laborum reiciendis aliquid eum quaerat.</div>
-        </div>
-        
-        <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
-        <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
-        <button class="button_comentar">Comentar</button>
-
-       </div>
+    <div id="feed_container">
     </div>
-    
-    
-    <div class="postagem">
-        <div class="container">
- 
-        <span class="postado_por">Postado por <b id="b_usuario"><u>Usuário</u></b></span>
- 
-         <h2 class="b_titulo">Título</h2>
- 
-         <div class="post_txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur rerum sed nam in quisquam nobis nisi tempore necessitatibus, explicabo, mollitia, eius quis laboriosam culpa obcaecati ipsam similique facere quidem nesciunt!</div>
-         <img src="img/clarence1.jpg">
 
-         <b class="secao_comentarios">Comentários</b>
+    <h2 class="footer"> <a href="https://tecchicken.atlassian.net/servicedesk/customer/portal/3">Ajuda?</a> <br>
+        TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
 
-         <div class="coment1">
-             
-             <b>user_1</b>
-             <div>
-                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius delectus ab libero nobis explicabo, laborum reiciendis aliquid eum quaerat.</div>
-         </div>
-         
-         <div class="comentario_atual">Comentar como <b class="b_usuario_atual">Usuário atual</b>:</div>
-         <textarea id="" cols="20" rows="2" class="comentario_atual_txt"></textarea>
-         <button class="button_comentar">Comentar</button>
- 
-        </div>
-     </div> 
-
-    
-
-     <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
-    
 </body>
+
 </html>
 <script src="postagem.js"></script>
+<script>
+
+    function publicar() {
+            btn_criar.style.display = 'block';
+            div_criar.style.display = 'none';
+            console.log("entrei!")
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_publicar));
+            var idUsuario = sessionStorage.id_usuario_meuapp;
+            var tagAtual = sessionStorage.tag_atual_meuapp;
+
+
+            fetch(`/publicacoes/publicar/${idUsuario}/${tagAtual}`, {
+                method: "POST",
+                body: formulario
+            }).then(resposta => {
+
+                if (resposta.ok) {
+                    obterPublicacoes();
+                    finalizarAguardar();
+                } else {
+                    console.log('Erro ao publicar!');
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+            });
+            return false;
+            getElementById("nova_postagem").value = " ";
+            getElementById("in_url").value = " ";
+            getElementById("in_titulo").value = " ";
+        }
+
+    function atualizarFeed(publicacoes) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < publicacoes.length; i++) {
+            var publicacao = publicacoes[i];
+
+            // Publicacação
+            var divPublicacao = document.createElement("div")
+            var divContainer = document.createElement("div")
+            var spanNome = document.createElement("span")
+            var bTitulo = document.createElement("h2")
+            var divDescricao = document.createElement("div")
+            var Img = document.createElement("img")
+            // comentários
+            var bComentarios = document.createElement("b")
+            var divComentarioAtual = document.createElement("div")
+            var bUsuarioAtual = document.createElement("b")
+            var textArea = document.createElement("textarea")
+            var buttonComentar = document.createElement("button")
+
+
+            // Mudando o conteúdo
+            spanNome.innerHTML = `Postado por <b>${publicacao.nomeUsuario}:</b>`;
+            bTitulo.innerHTML = publicacao.titulo;
+            divDescricao.innerHTML = publicacao.descricao;
+            Img.src = publicacao.URL;
+            //comentários
+            bComentarios.innerHTML = `Comentários`;
+            divComentarioAtual.innerHTML = `Comentar como `;
+            bUsuarioAtual.innerHTML = `${sessionStorage.login_usuario_meuapp}`;
+            buttonComentar.innerHTML = `Comentar`
+
+
+            // Dando as classes/estilização
+            divPublicacao.className = "postagem";
+            divContainer.className = "container";
+            spanNome.className = "postado_por";
+            divDescricao.className = "post_txt";
+            bTitulo.className = "b_titulo";
+            //Comentários
+            bComentarios.className = "secao_comentarios";
+            divComentarioAtual.className = "comentario_atual";
+            bUsuarioAtual.className = "b_usuario_atual";
+            textArea.className = "comentario_atual_txt";
+            buttonComentar.className = "button_comentar";
+
+
+            // Colocando um elemento dentro do outro
+            divPublicacao.appendChild(divContainer);
+            divContainer.appendChild(spanNome);
+            divContainer.appendChild(bTitulo);
+            divContainer.appendChild(divDescricao);
+            divContainer.appendChild(Img);
+
+            feed.appendChild(divPublicacao);
+            // Comentários
+            divContainer.appendChild(bComentarios);
+            divContainer.appendChild(divComentarioAtual);
+            divComentarioAtual.appendChild(bUsuarioAtual);
+            divContainer.appendChild(textArea);
+            divContainer.appendChild(buttonComentar);
+        }
+    }
+
+
+    function obterPublicacoes() {
+        nomear()
+        sessionStorage.tag_atual_meuapp = 1;
+        var tagAtual = 1; 
+        aguardar();
+        fetch(`/publicacoes/${tagAtual}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        atualizarFeed(resposta);
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/publicacoes/${idUsuario}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(JSON.stringify(resposta))
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+            });
+    }
+
+    function aguardar() {
+        btn_publicar.disabled = true;
+        // img_aguarde.style.visibility = 'visible';
+        // div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizarAguardar(resposta) {
+        btn_publicar.disabled = false;
+        // img_aguarde.style.visibility = 'hidden';
+        if (resposta) {
+            // div_erro.style.visibility = 'visible';
+            // div_erro.innerHTML = resposta;
+        }
+    }
+
+    verificar_autenticacao();
+
+
+</script>

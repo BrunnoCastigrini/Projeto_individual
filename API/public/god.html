@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/inside.css">
     <link rel="icon" href="img/boy2.png">
+    <script type="text/javascript" src="funcoes.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- font-family: 'Delius', cursive; -->
@@ -32,7 +33,7 @@
                 <a href="tags.html">
                     <li class="tags">Tags</li>
                 </a>
-                <a href="index.html">
+                <a href="index.html" onclick="logoff()">
                     <li class="sair">Sair</li>
                 </a>
                 <img class="li_img" src="https://image.flaticon.com/icons/png/512/276/276010.png" alt="imagem padrão de usuário" onmouseover="mostrar()" onmouseout="esconder()">
@@ -68,14 +69,11 @@
         </div>
     </div>
 
-
     <div id="feed_container">
-
     </div>
 
-
-
-    <h2 class="footer">TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
+    <h2 class="footer"> <a href="https://tecchicken.atlassian.net/servicedesk/customer/portal/3">Ajuda?</a> <br>
+        TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
 
 </body>
 
@@ -84,6 +82,7 @@
 <script>
 
     function publicar() {
+            btn_criar.style.display = 'block';
             div_criar.style.display = 'none';
             console.log("entrei!")
             aguardar();
@@ -92,14 +91,13 @@
             var tagAtual = sessionStorage.tag_atual_meuapp;
 
 
-            fetch(`/publicacoes/publicar/${idUsuario}`, {
+            fetch(`/publicacoes/publicar/${idUsuario}/${tagAtual}`, {
                 method: "POST",
                 body: formulario
             }).then(resposta => {
 
                 if (resposta.ok) {
                     obterPublicacoes();
-
                     finalizarAguardar();
                 } else {
                     console.log('Erro ao publicar!');
@@ -109,11 +107,10 @@
                     });
                 }
             });
-
             return false;
-            nova_postagem.value = " ";
-            in_url.value = " ";
-            in_titulo.value = " ";
+            getElementById("nova_postagem").value = " ";
+            getElementById("in_url").value = " ";
+            getElementById("in_titulo").value = " ";
         }
 
     function atualizarFeed(publicacoes) {
@@ -184,8 +181,9 @@
     function obterPublicacoes() {
         nomear()
         sessionStorage.tag_atual_meuapp = 2;
+        var tagAtual = 2; 
         aguardar();
-        fetch("/publicacoes")
+        fetch(`/publicacoes/${tagAtual}`)
             .then(resposta => {
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
