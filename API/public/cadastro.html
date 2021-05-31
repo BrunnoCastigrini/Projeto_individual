@@ -34,7 +34,7 @@
 
             <a href="index.html"><img src="img/TheBoyAndTheTrigeerrr.png"></a>
 
-            <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+            <form id="form_cadastro" method="post" onsubmit="return validar()">
 
                 <input id="in_login" name="login" type="text" placeholder="Nome de usuário" maxlength="20">
 
@@ -54,7 +54,7 @@
 
 </html>
 <script>
-    function cadastrar() {
+    function validar() {
         /* Registrando os inputs em variáveis*/
         var login = (in_login.value).trim();
         var email = (in_email.value).toLowerCase();
@@ -63,7 +63,7 @@
 
         /* Variáveis booleanas para futuras validações nos if's */
         var campos_preenchidos = (login == '' || email == '' || senha == '' || confirmar == '');
-        var email_invalido = email.indexOf('@') == -1 && email.indexOf('.com') == -1;
+        var email_invalido = email.indexOf('@') == -1 || email.indexOf('.com') == -1;
         var senha_invalida = senha != confirmar;
         var tamanho_login = login.length < 3;
         var login_invalido = 0;
@@ -78,22 +78,32 @@
         /* Validações */
         if (campos_preenchidos) {
             alert('Você deve preencher todos os campos!')
+            return false;
 
         } else if (email_invalido) {
             alert('Você deve inserir um e-mail válido.')
+            return false;
 
         } else if (login_invalido > 0) {
             alert(`Não podem haver espaços no nome de usuário! Dica: Utilize _ ou -`)
+            return false;
 
         } else if (tamanho_login) {
             alert(`O nome de usuário deve ter pelo menos três caracteres.`)
+            return false;
 
         } else if (senha_invalida) {
             alert(`As senhas não coincidem.`)
+            return false;
 
             /* Interação com o BD */
         } else {
-            aguardar();
+            return cadastrar()
+           
+        }
+    }
+    function cadastrar(){
+        aguardar();
             var formulario = new URLSearchParams(new FormData(form_cadastro));
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -108,7 +118,6 @@
 
                     console.log('Erro de cadastro!');
                     response.text().then(function (resposta) {
-                        // div_erro.innerHTML = resposta;
                     });
                     finalizar_aguardar();
                 }
@@ -116,7 +125,7 @@
 
             return false;
 
-        }
+        
     }
 
     function aguardar() {
