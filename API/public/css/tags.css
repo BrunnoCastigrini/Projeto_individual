@@ -248,6 +248,10 @@ h2 {
     transition: 0.2s;
     color: #FF385F;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 
 .txt_hack {
     padding-top: 8%;
