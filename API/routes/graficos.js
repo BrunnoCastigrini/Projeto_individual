@@ -10,9 +10,9 @@ router.get('/grafico', function (req, res, next) {
 	console.log(`Obtendo os dados das tags mais utilizadas...`);
 
 	let instrucaoSql = ` SELECT
-                        (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 1) as mu,
-                        (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 2) as god,
-                        (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 3) as hack;`;
+          (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 1) as mu,
+          (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 2) as god,
+          (SELECT COUNT(fkTag) FROM publicacao WHERE fkTag = 3) as hack;`;
 
 
 	sequelize.query(instrucaoSql, { 
