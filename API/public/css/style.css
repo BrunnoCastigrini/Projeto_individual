@@ -18,6 +18,10 @@ html {
     background-color: #555555;
     border-radius: 10px;
 }
+@font-face {
+    font-family: "The Midnight";
+    src: url(../fonts/The\ Midnight\ DEMO.otf);
+}
 /* Body */
 
 body {
@@ -56,6 +60,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: bolder;
     box-shadow: 5px 5px 9px -2px black;
+    transition: 0.2s ease-in-out;
 }
 a {
     text-decoration: none;

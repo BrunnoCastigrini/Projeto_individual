@@ -20,8 +20,8 @@
 /* body */
 body {
     margin: 0;
-    /* background-image: url(../img/berserk.png); */
-    background-image: url(../img/berserk-background.jpeg);
+    /* background-image: url(../img/berserk-background.jpeg); */
+    background-image: url(../img/background-clarence.jpg);
     background-color: #5856A4;   
     background-repeat: no-repeat;
     background-size: cover;
@@ -89,10 +89,10 @@ body {
 .header a{
     text-decoration: none;
     color: black;
+    transition: 0.2s ease-in-out;
 }
 
 .header a:hover {
-    transition: 0.2s;
     color: white;
     font-size: 20pt;
 }
@@ -103,18 +103,23 @@ h2 {
 }
 
 /* tags */
-
+@font-face {
+    font-family: "The Midnight";
+    src: url(../fonts/The\ Midnight\ DEMO.otf);
+}
 .tags{
     text-align: center;
     width: 15%;
-    margin: 0 42.5% 8% 42.5%;
+    margin: 0 42.5% 4% 42.5%;
     padding-top: 7%;
-    font-family: 'Domine', serif;
+    /* font-family: 'Domine', serif; */
+    font-family: "The Midnight";
     font-weight: bolder;
     font-size: 40pt;
     text-shadow: rgb(0, 0, 0) 1px 2px 4px;
     /* border-bottom: 3px solid black; */
-    color: #A93636;
+    color: #ffffff;
+    /* color: #A93636; */
     /* overflow: auto; */
 }
 
@@ -128,8 +133,8 @@ h2 {
     text-align: center;
     width: 23%;
     height: 60vh;
-     border-radius: 6px;
-     border: 5px outset #797979;
+     border-radius: 20px;
+     /* border: 5px outset #797979; */
      margin: 0% 0% 0% 6.75%;
      background-color: white;
      float: left;
@@ -139,8 +144,8 @@ h2 {
 
 .mu img {
     width: 40%;
-    border-radius: 100px;
-    border: 5px solid black;
+    /* border-radius: 100px; */
+    /* border: 5px solid black; */
     margin-top: 5%;
     background-color: white;
     cursor: pointer;
@@ -153,11 +158,11 @@ h2 {
     margin: 0;
     padding-top: 1%;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
     
 }
 
 .mu h3:hover{
-    transition: 0.2s;
     color: #1F99D0;
 }
 .txt_mu {
@@ -173,8 +178,8 @@ h2 {
     text-align: center;
     width: 23%;
     height: 60vh;
-     border-radius: 6px;
-     border: 5px outset #797979;
+     border-radius: 20px;
+     /* border: 5px outset #797979; */
      margin: 0% 0% 0% 7.75%;
      background-color: white;
      float: left;
@@ -185,7 +190,7 @@ h2 {
 .god img {
     width: 40%;
     border-radius: 100px;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     margin-top: 5%;
     background-color: white;
     cursor: pointer;
@@ -198,10 +203,10 @@ h2 {
     margin: 0;
     padding-top: 1%;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 .god h3:hover{
-    transition: 0.2s;
     color: #936ED4;
 }
 
@@ -217,8 +222,8 @@ h2 {
 .hack{
     text-align: center;
     width: 23%;
-     border-radius: 6px;
-     border: 5px outset #797979;
+     border-radius: 20px;
+     /* border: 5px outset #F0468D; */
      margin: 0% 0% 0% 7.75%;
      background-color: white;
      float: left;
@@ -229,7 +234,7 @@ h2 {
 .hack img {
     width: 40%;
     border-radius: 100px;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     margin-top: 5%;
     background-color: white;
     cursor: pointer;
@@ -242,10 +247,10 @@ h2 {
     margin: 0;
     padding-top: 1%;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 .hack h3:hover{
-    transition: 0.2s;
     color: #FF385F;
 }
 a{
@@ -297,9 +302,9 @@ a{
 .footer a{
     text-decoration: none;
     color: white;
+    transition: 0.2s ease-in-out;
 }
 
 .footer a:hover{
-    transition: 0.2s;
     color: #021A37;
 }
