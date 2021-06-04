@@ -37,11 +37,11 @@ CREATE TABLE publicacao(
  CREATE TABLE comentario(
      idComentario INT AUTO_INCREMENT,
      txtComentario VARCHAR(100),
-     fkPostagem INT,
+     fkPublicacao INT,
      fkUsuario INT,
-     PRIMARY KEY(idComentario, fkPostagem),
+     PRIMARY KEY(idComentario, fkPublicacao),
      FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario),
-     FOREIGN KEY(fkPostagem) REFERENCES postagem(idPostagem)
+     FOREIGN KEY(fkPublicacao) REFERENCES postagem(idPublicacao)
      );
 
 
