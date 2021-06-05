@@ -13,9 +13,14 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true,
 			autoIncrement: true
 		},	
-        txtComentario: {
-            field: 'txtComentario',
+        descricao: {
+            field: 'descricao',
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        fkPublicacao: {
+            field: 'fkPublicacao',
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         fkUsuario: {

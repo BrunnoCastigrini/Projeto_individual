@@ -27,7 +27,6 @@
 body {
     margin: 0;
     background-color: #021A37;
-    /* background-image: url(../img/clarence2.jpeg); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -116,13 +115,11 @@ body {
     width: 10%;
     text-align: center;
     font-size: 46pt;
-    /* font-family: 'Domine', serif; */
     font-family: "The Midnight";
-    /* color: #343441; */
     color: #FFFFFF;
 }
 
-/* Criar postagem */
+/* Criar publicação */
 .criar_button {
     cursor: pointer;
     width: 13%;
@@ -134,7 +131,6 @@ body {
     border: none;
     border-radius: 8px;
     transition: 0.2s ease-in-out;
-    /* background-color: #1F99D0; */
 }
 
 .criar_button:hover{
@@ -183,7 +179,6 @@ body {
 
 .input_txt{
     color: black;
-    /* padding-bottom: 15%; */
     border: 1px solid #B1B1B1;
     width: 100%;
     border-radius: 6px;
@@ -294,6 +289,7 @@ body {
 
 .coment1 {
     margin: 2% 0 1% 0%;
+    font-size: 14pt;
 }
 
 .coment1 b{
@@ -301,7 +297,8 @@ body {
 }
 
 .coment1 div {
-    padding: 0.3% 0% 0.3% 1%;
+    margin: 0.6% 0 0.5% 0;
+    padding: 0.4% 0% 0.4% 1%;
     border-radius: 8px;
     color: black;
     background-color: #c7c7c7;

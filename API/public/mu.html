@@ -24,7 +24,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="obterPublicacoes()">
+<body onload="obterPublicacoes(); obterComentarios()">
     <div class="header">
         <div class="container">
 
@@ -36,7 +36,8 @@
                 <a href="index.html" onclick="logoff()">
                     <li class="sair">Sair</li>
                 </a>
-                <img class="li_img" src="https://image.flaticon.com/icons/png/512/276/276010.png" alt="imagem padrão de usuário" onmouseover="mostrar()" onmouseout="esconder()">
+                <img class="li_img" src="img/owl.png" alt="imagem padrão de usuário" onmouseover="mostrar()"
+                    onmouseout="esconder()">
                 <span class="display_nome_usuario" id="spanNome_usuario">Nome Usuário</span>
             </ul>
 
@@ -72,7 +73,8 @@
     <div id="feed_container">
     </div>
 
-    <h2 class="footer"> <a target="_blank" href="https://theboyandthetiger.atlassian.net/servicedesk/customer/portal/2">Ajuda?</a> <br>
+    <h2 class="footer"> <a target="_blank"
+            href="https://theboyandthetiger.atlassian.net/servicedesk/customer/portal/2">Ajuda?</a> <br>
         TheBoyAndTheTiger 2021. Nenhum direito reservado.</h2>
 
 </body>
@@ -80,44 +82,46 @@
 </html>
 <script src="postagem.js"></script>
 <script>
+    var idPubs = [];
+    var tagAtual = 1;
 
     function publicar() {
-            btn_criar.style.display = 'block';
-            div_criar.style.display = 'none';
-            console.log("entrei!")
-            aguardar();
-            var formulario = new URLSearchParams(new FormData(form_publicar));
-            var idUsuario = sessionStorage.id_usuario_meuapp;
-            var tagAtual = sessionStorage.tag_atual_meuapp;
+        btn_criar.style.display = 'block';
+        div_criar.style.display = 'none';
+        console.log("entrei!")
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
 
+        fetch(`/publicacoes/publicar/${idUsuario}/${tagAtual}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
 
-            fetch(`/publicacoes/publicar/${idUsuario}/${tagAtual}`, {
-                method: "POST",
-                body: formulario
-            }).then(resposta => {
-
-                if (resposta.ok) {
-                    obterPublicacoes();
-                    finalizarAguardar();
-                } else {
-                    console.log('Erro ao publicar!');
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                        finalizarAguardar(texto);
-                    });
-                }
-            });
-            return false;
-            getElementById("nova_postagem").value = " ";
-            getElementById("in_url").value = " ";
-            getElementById("in_titulo").value = " ";
-        }
+            if (resposta.ok) {
+                obterPublicacoes();
+                finalizarAguardar();
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+        });
+        return false;
+        getElementById("nova_postagem").value = " ";
+        getElementById("in_url").value = " ";
+        getElementById("in_titulo").value = " ";
+    }
 
     function atualizarFeed(publicacoes) {
         var feed = document.getElementById("feed_container");
         feed.innerHTML = "";
         for (let i = 0; i < publicacoes.length; i++) {
             var publicacao = publicacoes[i];
+            idPubs.push(publicacao.id);
+            var idPublicacao = idPubs[i]
 
             // Publicacação
             var divPublicacao = document.createElement("div")
@@ -130,21 +134,33 @@
             var bComentarios = document.createElement("b")
             var divComentarioAtual = document.createElement("div")
             var bUsuarioAtual = document.createElement("b")
-            var textArea = document.createElement("textarea")
-            var buttonComentar = document.createElement("button")
+            // Comentários[]
+            var feedComentario = document.createElement("div");
+            feedComentario.id = `feed_comentarios_${idPublicacao}`;
+
+            // Partes que entram no form
+            var formComentario = document.createElement("form");
+            var textArea = document.createElement("textarea");
+            var buttonComentar = document.createElement("button");
+
+            //adicionando caracteristicas ao form
+            formComentario.setAttribute("onsubmit", `return comentar(${idPublicacao}, form_${idPublicacao})`);
+            textArea.name = "descricao";
+            buttonComentar.type = "submit";
+            formComentario.id = `form_${idPublicacao}`
 
 
             // Mudando o conteúdo
+            divPublicacao.id = `pub_${idPublicacao}`
             spanNome.innerHTML = `Postado por <b>${publicacao.nomeUsuario}:</b>`;
             bTitulo.innerHTML = publicacao.titulo;
             divDescricao.innerHTML = publicacao.descricao;
             Img.src = publicacao.URL;
-            //comentários
+            //comentário
             bComentarios.innerHTML = `Comentários`;
             divComentarioAtual.innerHTML = `Comentar como `;
             bUsuarioAtual.innerHTML = `${sessionStorage.login_usuario_meuapp}`;
-            buttonComentar.innerHTML = `Comentar`
-
+            buttonComentar.innerHTML = `Comentar`;
 
             // Dando as classes/estilização
             divPublicacao.className = "postagem";
@@ -172,16 +188,18 @@
             divContainer.appendChild(bComentarios);
             divContainer.appendChild(divComentarioAtual);
             divComentarioAtual.appendChild(bUsuarioAtual);
-            divContainer.appendChild(textArea);
-            divContainer.appendChild(buttonComentar);
+
+            formComentario.appendChild(textArea);
+            formComentario.appendChild(buttonComentar);
+            divContainer.appendChild(formComentario);
+
+            divContainer.appendChild(feedComentario);
         }
     }
 
 
     function obterPublicacoes() {
         nomear()
-        sessionStorage.tag_atual_meuapp = 1;
-        var tagAtual = 1; 
         aguardar();
         fetch(`/publicacoes/${tagAtual}`)
             .then(resposta => {
@@ -203,35 +221,83 @@
             });
     }
 
-    function obterPublicacoesPorUsuario(idUsuario) {
-        fetch(`/publicacoes/${idUsuario}`)
-            .then(resposta => {
-                if (resposta.ok) {
-                    resposta.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        // alert(JSON.stringify(resposta))
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-            .catch(function (error) {
-                console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
-            });
-    }
-
     function aguardar() {
         btn_publicar.disabled = true;
-        // img_aguarde.style.visibility = 'visible';
-        // div_erro.style.visibility = 'hidden';
     }
 
     function finalizarAguardar(resposta) {
         btn_publicar.disabled = false;
-        // img_aguarde.style.visibility = 'hidden';
-        if (resposta) {
-            // div_erro.style.visibility = 'visible';
-            // div_erro.innerHTML = resposta;
+    }
+
+    function comentar(pubAtual, form_id) {
+        console.log("Publicando comentário!")
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        var formulario = new URLSearchParams(new FormData(form_id));
+        fetch(`/comentarios/${pubAtual}/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            if (resposta.ok) {
+                obterComentarios();
+            } else {
+                console.log('Erro ao publicar comentário!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        });
+        return false;
+        getElementById("nova_postagem").value = " ";
+        getElementById("in_url").value = " ";
+        getElementById("in_titulo").value = " ";
+    }
+
+    function obterComentarios() {
+        fetch(`/comentarios/${tagAtual}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Comentários recebidos: ${JSON.stringify(resposta)}`);
+
+                        atualizarComentarios(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    function atualizarComentarios(comentarios) {
+
+        for (let i = 0; i < idPubs.length; i++) {
+            var feed = document.getElementById(`feed_comentarios_${comentarios[i].idPublicacao}`);
+            feed.innerHTML = "";
+        }
+
+        for (let i = 0; i < comentarios.length; i++) {
+            var comentario = comentarios[i];
+            var feed = document.getElementById(`feed_comentarios_${comentario.idPublicacao}`);
+
+            var divComent = document.createElement("div");
+            var spanComentario = document.createElement("span");
+            var div_Descricao = document.createElement("div");
+
+            // Mudando o conteúdo
+            spanComentario.innerHTML = `<b>${comentario.autor}:</b>`;
+            div_Descricao.innerHTML = comentario.descricao;
+
+            // Dando as classes/estilização
+            divComent.className = "coment1";
+
+            // Colocando um elemento dentro do outro
+            divComent.appendChild(spanComentario);
+            divComent.appendChild(div_Descricao);
+
+            feed.appendChild(divComent);
         }
     }
 

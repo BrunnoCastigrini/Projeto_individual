@@ -35,6 +35,7 @@ router.get('/:tagAtual', function(req, res, next) {
 	
     let instrucaoSql = `SELECT 
     usuario.nomeUsuario,
+    publicacao.idPublicacao,
     publicacao.titulo,
     publicacao.URL,
     publicacao.descricao
@@ -66,6 +67,7 @@ router.get('/:idUsuario', function(req, res, next) {
 
     let instrucaoSql = `SELECT 
     usuario.nomeUsuario,
+    publicacao.idPublicacao,
     publicacao.titulo,
     publicacao.URL,
     publicacao.descricao
