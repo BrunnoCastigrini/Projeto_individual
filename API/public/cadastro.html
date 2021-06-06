@@ -60,7 +60,6 @@
         var email = (in_email.value).toLowerCase();
         var senha = in_senha.value;
         var confirmar = in_confirmar.value;
-
         /* Variáveis booleanas para futuras validações nos if's */
         var campos_preenchidos = (login == '' || email == '' || senha == '' || confirmar == '');
         var email_invalido = email.indexOf('@') == -1 || email.indexOf('.com') == -1;
